@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<extension type="package" version="1.6">
+    <name>iFlyChat Package</name>
+    <author>iFlyChat Package Team</author>
+    <creationDate>March 2014</creationDate>
+    <packagename>iflychat</packagename>
+    <version>1.0.0</version>
+    <url>http://www.iflylabs.com/</url>
+    <packager>iFlyChat Package Team</packager>
+    <packagerurl>http://www.iflylabs.com/</packagerurl>
+    <description>Thanks for choosing iFlyChat.</description>
+
+
+
+    <files folder="packages">
+        <file type="component" id="iflychat" >com_iflychat.zip</file>
+        <file type="module" id="iflychat" client="site">mod_iflychat.zip</file>
+	
+	
+
+    </files>
+
+</extension>
