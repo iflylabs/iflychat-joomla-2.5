@@ -1,0 +1,230 @@
+<?php
+/**
+ * @package iFlyChat
+ * @version 1.0.0
+ * @copyright Copyright (C) 2014 iFlyChat. All rights reserved.
+ * @license GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html
+ * @author iFlyChat Team
+ * @link https://iflychat.com
+ */
+error_reporting(2);
+jimport('joomla.application.module.helper');
+
+$comp = JComponentHelper::getParams('com_iflychat'); //getting component details
+$module = JModuleHelper::getModule('mod_iflychat');
+//$variable_get = $moduleParams->get('iflychat_ext_d_i');
+
+//$variable_get = '4';
+$variable_get = $comp->get('iflychat_ext_d_i', '');
+
+define('IFLYCHAT_EXTERNAL_HOST', 'http://api'.$variable_get.'.iflychat.com');
+define('IFLYCHAT_EXTERNAL_PORT', '80');
+define('IFLYCHAT_EXTERNAL_A_HOST', 'https://api'.$variable_get.'.iflychat.com');
+define('IFLYCHAT_EXTERNAL_A_PORT', '443');
+
+
+//Assigning values to data array
+$user = JFactory::getUser(); //getting user details
+
+
+
+$api_key = $comp->get('iflychat_external_api_key');
+
+$image_path = JURI::base().'modules/'.$module->module;
+
+if($user->get('isRoot')) {
+    $role = "admin";
+}
+else {
+  if(!empty($user->groups)) {
+    $role = $user->groups;
+  }
+  else {
+    $role = "normal";
+  }
+}
+
+
+
+if($comp->get('iflychat_theme', 1) == 1) {
+    $iflychat_theme = 'light';
+}
+else {
+    $iflychat_theme = 'dark';
+}
+//print_r(iflychat_get_current_guest_name());
+//print_r(iflychat_get_current_guest_id());
+//data array
+$data = array(
+    'uname' => ($user->id)?$user->name:iflychat_get_current_guest_name(),
+    'uid' => ($user->id)?$user->id:'0-'.iflychat_get_current_guest_id(),
+    'api_key' => $api_key,
+    'image_path' => JURI::base().'modules/'.$module->module . '/themes/' . $iflychat_theme . '/images',
+    'isLog' => TRUE,
+    'role' => $role,
+    'whichTheme' => 'blue',
+    'enableStatus' => TRUE,
+    'validState' => array('available','offline','busy','idle')
+);
+
+try {
+//HTTP request
+    jimport('joomla.http');
+    $transport = null;
+    $transportWrappers = array('JHttpTransportCurl', 'JHttpTransportStream',
+        'JHttpTransportSocket');
+    $options = new JRegistry();
+    while (!$transport && $transportWrappers)
+        try{
+            $wrapper = array_shift($transportWrappers);
+            $transport = new $wrapper($options);
+        }
+        catch (Exception $e){
+            continue;
+        }
+    $http = new JHttp($options, $transport);
+    $response = $http->post(IFLYCHAT_EXTERNAL_A_HOST . ':' . IFLYCHAT_EXTERNAL_A_PORT .  '/p/', $data);
+
+
+$resObj = json_decode($response->body);
+
+
+
+    if(isset($resObj->_i) && ($resObj->_i!=$variable_get)) {
+
+
+        $comp->set('iflychat_ext_d_i', $resObj->_i);
+
+    // Get a new database query instance
+        $db = JFactory::getDBO();
+        $query = $db->getQuery(true);
+
+    // Build the query
+        $query->update('#__extensions AS a');
+        $query->set('a.params = ' . $db->quote((string)$comp));
+        $query->where('a.element = "com_iflychat"');
+
+// Execute the query
+        $db->setQuery($query);
+        $db->query();
+
+
+    }
+
+    $json = json_decode($response->body, TRUE);
+
+
+    $json['name'] = ($user->id)?$user->name:iflychat_get_current_guest_name();
+    $json['uid'] = ($user->id)?$user->id:'0-'.iflychat_get_current_guest_id();
+$json['up'] = iflychat_get_user_pic_url();
+    $json['upl'] = iflychat_get_user_profile_url();
+
+// Get the document object.
+    $document =& JFactory::getDocument();
+
+// Set the MIME type for JSON output.
+    $document->setMimeEncoding('application/json');
+    print json_encode($json);
+}
+
+
+
+catch(Exception $e)
+{
+
+
+    $var = array (
+        'uname' => ($user->id)?$user->name:iflychat_get_current_guest_name(),
+        'uid' =>($user->id)?$user->id:'0-'.iflychat_get_current_guest_id()
+    );
+    $document =& JFactory::getDocument();
+    $document->setMimeEncoding('application/json');
+    print_r(json_encode($var));
+}
+
+function iflychat_get_random_name() {
+    $module = JModuleHelper::getModule('mod_iflychat');
+    $path = JURI::base().'modules/'.$module->module . "/guest_names/iflychat_guest_random_names.txt";
+    $f_contents = file($path);
+    $line = trim($f_contents[rand(0, count($f_contents) - 1)]);
+    return $line;
+}
+
+function iflychat_get_current_guest_name() {
+
+    $comp = JComponentHelper::getParams('com_iflychat');
+    if(isset($_SESSION) && isset($_SESSION['iflychat_guest_name'])) {
+        //if(!isset($_COOKIE) || !isset($_COOKIE['drupalchat_guest_name'])) {
+        setrawcookie('iflychat_guest_name', rawurlencode($_SESSION['iflychat_guest_name']), time()+60*60*24*365);
+        //}
+    }
+    else if(isset($_COOKIE) && isset($_COOKIE['iflychat_guest_name']) && isset($_COOKIE['iflychat_guest_session'])&& ($_COOKIE['iflychat_guest_session']==iflychat_compute_guest_session(iflychat_get_current_guest_id()))) {
+        $_SESSION['iflychat_guest_name'] = check_plain($_COOKIE['iflychat_guest_name']);
+    }
+    else {
+        if($comp->get('iflychat_anon_use_name', 1)==1) {
+            $_SESSION['iflychat_guest_name'] = check_plain($comp->get('iflychat_anon_prefix', 'Guest') . ' ' . iflychat_get_random_name());
+        }
+        else {
+            $_SESSION['iflychat_guest_name'] = check_plain($comp->get('iflychat_anon_prefix', 'Guest') . time());
+        }
+        setrawcookie('iflychat_guest_name', rawurlencode($_SESSION['iflychat_guest_name']), time()+60*60*24*365);
+    }
+    return $_SESSION['iflychat_guest_name'];
+}
+
+function iflychat_get_current_guest_id() {
+    if(isset($_SESSION) && isset($_SESSION['iflychat_guest_id'])) {
+        //if(!isset($_COOKIE) || !isset($_COOKIE['drupalchat_guest_id'])) {
+        setrawcookie('iflychat_guest_id', rawurlencode($_SESSION['iflychat_guest_id']), time()+60*60*24*365);
+        setrawcookie('iflychat_guest_session', rawurlencode($_SESSION['iflychat_guest_session']), time()+60*60*24*365);
+        //}
+    }
+    else if(isset($_COOKIE) && isset($_COOKIE['iflychat_guest_id']) && isset($_COOKIE['iflychat_guest_session']) && ($_COOKIE['iflychat_guest_session']==iflychat_compute_guest_session($_COOKIE['iflychat_guest_id']))) {
+        $_SESSION['iflychat_guest_id'] = check_plain($_COOKIE['iflychat_guest_id']);
+        $_SESSION['iflychat_guest_session'] = check_plain($_COOKIE['iflychat_guest_session']);
+    }
+    else {
+        $characters = 'abcdefghijklmnopqrstuvwxyz0123456789';
+        $iflychatId = time();
+        for ($i = 0; $i < 5; $i++) {
+            $iflychatId .= $characters[rand(0, strlen($characters) - 1)];
+        }
+        $_SESSION['iflychat_guest_id'] = $iflychatId;
+        $_SESSION['iflychat_guest_session'] = iflychat_compute_guest_session($_SESSION['iflychat_guest_id']);
+        setrawcookie('iflychat_guest_id', rawurlencode($_SESSION['iflychat_guest_id']), time()+60*60*24*365);
+        setrawcookie('iflychat_guest_session', rawurlencode($_SESSION['iflychat_guest_session']), time()+60*60*24*365);
+    }
+    return $_SESSION['iflychat_guest_id'];
+}
+
+function iflychat_compute_guest_session($id) {
+    $comp = JComponentHelper::getParams('com_iflychat');
+    return md5(substr($comp->get('iflychat_external_api_key', NULL), 0, 5) . $id);
+}
+
+function check_plain($text) {
+    return htmlspecialchars($text, ENT_QUOTES, 'UTF-8');
+}
+function iflychat_get_user_pic_url() {
+  $url = '';
+  $module = JModuleHelper::getModule('mod_iflychat');
+  $comp = JComponentHelper::getParams('com_iflychat');
+  if($comp->get('iflychat_theme', 1) == 1) {
+    $iflychat_theme = 'light';
+  }
+  else {
+    $iflychat_theme = 'dark';
+  }
+  $url = JURI::base().'modules/'.$module->module . '/themes/' . $iflychat_theme . '/images/default_avatar.png';
+  $pos = strpos($url, ':');
+  if($pos !== false) {
+    $url = substr($url, $pos+1);
+  }
+  return $url;
+}
+
+function iflychat_get_user_profile_url() {
+  $upl = 'javascript:void()';
+  return $upl;
+}

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension
+        version="2.5"
+        type="module"
+        client="site"
+        method="upgrade">
+    <name>iFlyChat</name>
+    <author>iFlyChat Team</author>
+    <creationDate>May 2014</creationDate>
+    <copyright>(C) 2014 iFlyLabs.</copyright>
+    <license>GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html</license>
+    <authorEmail>joomla@iflylabs.com</authorEmail>
+    <authorUrl>https://iflychat.com</authorUrl>
+    <version>2.5.0</version>
+    <description>iFlyChat allows visitors of your Joomla site to chat with each other privately (one-to-one chat) or together in chat rooms.</description>
+    <files>
+        <filename module="mod_iflychat">mod_iflychat.php</filename>
+        <filename module="mod_iflychat">helper.php</filename>
+        <filename>index.html</filename>
+        <filename>LICENSE.txt</filename>
+        <folder>js</folder>
+        <folder>tmpl</folder>
+        <folder>wav</folder>
+        <folder>guest_names</folder>
+        <folder>themes</folder>
+<folder>language</folder>
+    </files>
+<languages folder="admin">
+            <language tag="en-GB">language/en-GB/en-GB.com_iflychat.ini</language>
+            
+        </languages>
+
+
+
+</extension>
