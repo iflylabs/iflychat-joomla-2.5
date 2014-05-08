@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension
+        version="2.5"
+        type="component"
+        method="upgrade">
+    <name>iFlyChat</name>
+    <author>iFlyChat Team</author>
+    <creationDate>May 2014</creationDate>
+    <copyright>(C) 2014 iFlyLabs.</copyright>
+    <license>GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html</license>
+    <authorEmail>joomla@iflylabs.com</authorEmail>
+    <authorUrl>https://iflychat.com</authorUrl>
+    <version>2.5.0</version>
+    <description>iFlyChat allows visitors of your Joomla site to chat with each other privately (one-to-one chat) or together in chat rooms.</description>
+
+
+
+    
+
+    <!-- Site Main File Copy Section -->
+    <!-- Note the folder attribute: This attribute describes the folder
+        to copy FROM in the package to install therefore files copied
+        in this section are copied from /site/ in the package -->
+    <files folder="site">
+        <filename>index.html</filename>
+        <filename>iflychat.php</filename>
+        <filename>controller.php</filename>
+        <folder>views</folder>
+        <folder>models</folder>
+        <folder>controllers</folder>
+        <filename>index.html</filename>
+    </files>
+    <media destination="com_iflychat" folder="media">
+        <filename>index.html</filename>
+        <folder>css</folder>
+        <folder>images</folder>
+    </media>
+
+    <administration>
+        <!-- Administration Menu Section -->
+        <menu img="../media/com_iflychat/images/iFlyChat-16x16.png">com_iflychat</menu>
+        <!-- Administration Main File Copy Section -->
+        <!-- Note the folder attribute: This attribute describes the folder
+            to copy FROM in the package to install therefore files copied
+            in this section are copied from /admin/ in the package -->
+        <files folder="admin">
+            <!-- Admin Main File Copy Section -->
+            <filename>iflychat.php</filename>
+            <filename>controller.php</filename>
+            <!-- models files section -->
+            <folder>models</folder>
+            <!-- views files section -->
+            <folder>views</folder>
+            <!-- controllers files section -->
+            <folder>controllers</folder>
+            <folder>language</folder>
+            <filename>index.html</filename>
+
+        </files>
+
+        <languages folder="admin">
+            <language tag="en-GB">language/en-GB/en-GB.com_iflychat.ini</language>
+<language tag="en-GB">language/en-GB/en-GB.com_iflychat.sys.ini</language>
+            
+        </languages>
+    </administration>
+</extension>

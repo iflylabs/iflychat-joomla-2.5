@@ -49,10 +49,10 @@ class IflychatControllerIflychat extends JControllerLegacy {
         $option	= 'com_iflychat';
 
         //post request
-     /*   $pdata = array(
-            'api_key' => $data['iflychat_external_api_key'],
+        $pdata = array(
+            'api_key' => 'A'.$data['iflychat_external_api_key'],
             'enable_chatroom' => $data['iflychat_enable_chatroom'],
-            'theme' => $data['iflychat_theme'],
+            'theme' => ($data['iflychat_theme'] == 1)?'light':'dark',
             'notify_sound' => $data['iflychat_notification_sound'],
             'smileys' => $data['iflychat_enable_smileys'],
             'log_chat' => $data['iflychat_log_messages'],
@@ -72,27 +72,15 @@ class IflychatControllerIflychat extends JControllerLegacy {
             'use_stop_word_list' => $data['iflychat_use_stop_word_list'],
             'stop_word_list' => $data['iflychat_stop_word_list'],
         );
-
+        
+        
         jimport('joomla.http');
-        $transport = null;
-        $transportWrappers = array('JHttpTransportCurl', 'JHttpTransportStream',
-            'JHttpTransportSocket');
-        $options = new JRegistry();
-        while (!$transport && $transportWrappers)
-            try{
-                $wrapper = array_shift($transportWrappers);
-                $transport = new $wrapper($options);
-            }
-            catch (Exception $e){
-                continue;
-            }
-        $http = new JHttp($options, $transport);
+        $http = JHttpFactory::getHttp();
         $response = $http->post(IFLYCHAT_EXTERNAL_A_HOST . ':' . IFLYCHAT_EXTERNAL_A_PORT .  '/z/', $pdata);
+        
+        $resObj = json_decode($response->body);
 
 
-
-
-*/
         // Check if the user is authorized to do this.
         if (!JFactory::getUser()->authorise('core.admin', $option))
         {

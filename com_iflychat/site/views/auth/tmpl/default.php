@@ -70,21 +70,9 @@ $data = array(
 try {
 //HTTP request
     jimport('joomla.http');
-    $transport = null;
-    $transportWrappers = array('JHttpTransportCurl', 'JHttpTransportStream',
-        'JHttpTransportSocket');
-    $options = new JRegistry();
-    while (!$transport && $transportWrappers)
-        try{
-            $wrapper = array_shift($transportWrappers);
-            $transport = new $wrapper($options);
-        }
-        catch (Exception $e){
-            continue;
-        }
-    $http = new JHttp($options, $transport);
+    
+    $http = JHttpFactory::getHttp();
     $response = $http->post(IFLYCHAT_EXTERNAL_A_HOST . ':' . IFLYCHAT_EXTERNAL_A_PORT .  '/p/', $data);
-
 
     $resObj = json_decode($response->body);
 
