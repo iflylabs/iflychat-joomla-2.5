@@ -393,7 +393,7 @@
                 name="iflychat_font_color"
                 type="text"
                 label="MOD_IFLYCHAT_FONT_COLOR"
-                default="#FFFFFF"
+                default="#222222"
                 size="7"
                 required="true"
                 />
@@ -417,7 +417,7 @@
                 />
     </fieldset>
     <fieldset name="list_control"
-              label="iFlyChat user online list control">
+              label="iFlyChat Online User List Control">
         <field
                 name="iflychat_minimize_chat_user_list"
                 type="radio"
