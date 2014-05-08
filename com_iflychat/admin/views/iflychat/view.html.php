@@ -34,12 +34,12 @@ class IflyChatViewIflyChat extends JView
             if ($form && $component->params) {
                 $form->bind($component->params);
             }
-$document = JFactory::getDocument();
+            $document = JFactory::getDocument();
             $document->addStyleDeclaration('.icon-48-generic {background-image: url(../media/com_iflychat/images/iflychat-48x48.png);}');
 
             $this->assignRef('form',		$form);
             $this->assignRef('component',	$component);
-        $this->addToolbar();
+            $this->addToolbar();
             $this->document->setTitle(JText::_('JGLOBAL_EDIT_PREFERENCES'));
 
             parent::display($tpl);

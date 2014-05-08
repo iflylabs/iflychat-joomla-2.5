@@ -131,7 +131,7 @@ class IflychatControllerIflychat extends JControllerLegacy {
             'id'		=> $id,
             'option'	=> $option
         );
-        print_r($data);
+
         $return = $model->save($data);
 
         // Check the return value.
@@ -151,7 +151,7 @@ class IflychatControllerIflychat extends JControllerLegacy {
         {
             case 'apply':
                 $message = JText::_('COM_IFLYCHAT_SAVE_SUCCESS');
-print_r($data);
+
                 $this->setRedirect('index.php?option=com_iflychat&view=iflychat&layout=edit', $message);
                 break;
 

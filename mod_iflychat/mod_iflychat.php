@@ -10,12 +10,10 @@
 defined('_JEXEC') or die('Direct Access to this location is not allowed.');
 //Add helper file
 require_once dirname(__FILE__).DS.'helper.php';
-//Adding custom field for running script in backend
-JFormHelper::addFieldPath(JURI::base().'modules/mod_iflychat/models/fields');
+
 
 $items = modIflychatHelper::get_html_code();
 
 
-$document =  JFactory::getDocument();
 require(JModuleHelper::getLayoutPath('mod_iflychat'));
 

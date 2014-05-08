@@ -118,8 +118,6 @@ class IflychatModelIflychat extends JModelForm  {
     }
     function getComponent()
     {
-
-
         $result = JComponentHelper::getComponent('com_iflychat');
 
         return $result;

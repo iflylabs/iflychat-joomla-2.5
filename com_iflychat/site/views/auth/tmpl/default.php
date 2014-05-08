@@ -86,7 +86,7 @@ try {
     $response = $http->post(IFLYCHAT_EXTERNAL_A_HOST . ':' . IFLYCHAT_EXTERNAL_A_PORT .  '/p/', $data);
 
 
-$resObj = json_decode($response->body);
+    $resObj = json_decode($response->body);
 
 
 
@@ -104,7 +104,7 @@ $resObj = json_decode($response->body);
         $query->set('a.params = ' . $db->quote((string)$comp));
         $query->where('a.element = "com_iflychat"');
 
-// Execute the query
+    // Execute the query
         $db->setQuery($query);
         $db->query();
 
@@ -116,7 +116,7 @@ $resObj = json_decode($response->body);
 
     $json['name'] = ($user->id)?$user->name:iflychat_get_current_guest_name();
     $json['uid'] = ($user->id)?$user->id:'0-'.iflychat_get_current_guest_id();
-$json['up'] = iflychat_get_user_pic_url();
+    $json['up'] = iflychat_get_user_pic_url();
     $json['upl'] = iflychat_get_user_profile_url();
 
 // Get the document object.

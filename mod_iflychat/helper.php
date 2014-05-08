@@ -20,7 +20,7 @@ class modIflychatHelper
         //$variable_get = '4';
         $compParams = JComponentHelper::getParams('com_iflychat');
         $module = JModuleHelper::getModule('mod_iflychat');
-         $variable_get = $compParams->get('iflychat_ext_d_i', '');
+        $variable_get = $compParams->get('iflychat_ext_d_i', '');
 
         define('IFLYCHAT_EXTERNAL_HOST', 'http://api'.$variable_get.'.iflychat.com');
         define('IFLYCHAT_EXTERNAL_PORT', '80');
@@ -132,9 +132,8 @@ class modIflychatHelper
         $my_settings['text_search_bar'] = JText::_('MOD_TYPE_HERE_TO_SEARCH');
         return $my_settings;
     }
-    // Function for running script in body
+    // Run script in body
     public function get_html_code(){
-        $module = JModuleHelper::getModule('mod_iflychat');
 
         $r = 'Drupal={};Drupal.settings={};Drupal.settings.drupalchat=' . json_encode(self::iflychat_initial_go())  . ';</script>';
 
