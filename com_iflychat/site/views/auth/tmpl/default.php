@@ -36,12 +36,12 @@ if($user->get('isRoot')) {
     $role = "admin";
 }
 else {
-  if(!empty($user->groups)) {
-    $role = $user->groups;
-  }
-  else {
-    $role = "normal";
-  }
+    if(!empty($user->groups)) {
+        $role = $user->groups;
+    }
+    else {
+        $role = "normal";
+    }
 }
 
 
@@ -95,16 +95,16 @@ try {
 
         $comp->set('iflychat_ext_d_i', $resObj->_i);
 
-    // Get a new database query instance
+        // Get a new database query instance
         $db = JFactory::getDBO();
         $query = $db->getQuery(true);
 
-    // Build the query
+        // Build the query
         $query->update('#__extensions AS a');
         $query->set('a.params = ' . $db->quote((string)$comp));
         $query->where('a.element = "com_iflychat"');
 
-    // Execute the query
+// Execute the query
         $db->setQuery($query);
         $db->query();
 
@@ -207,24 +207,24 @@ function check_plain($text) {
     return htmlspecialchars($text, ENT_QUOTES, 'UTF-8');
 }
 function iflychat_get_user_pic_url() {
-  $url = '';
-  $module = JModuleHelper::getModule('mod_iflychat');
-  $comp = JComponentHelper::getParams('com_iflychat');
-  if($comp->get('iflychat_theme', 1) == 1) {
-    $iflychat_theme = 'light';
-  }
-  else {
-    $iflychat_theme = 'dark';
-  }
-  $url = JURI::base().'modules/'.$module->module . '/themes/' . $iflychat_theme . '/images/default_avatar.png';
-  $pos = strpos($url, ':');
-  if($pos !== false) {
-    $url = substr($url, $pos+1);
-  }
-  return $url;
+    $url = '';
+    $module = JModuleHelper::getModule('mod_iflychat');
+    $comp = JComponentHelper::getParams('com_iflychat');
+    if($comp->get('iflychat_theme', 1) == 1) {
+        $iflychat_theme = 'light';
+    }
+    else {
+        $iflychat_theme = 'dark';
+    }
+    $url = JURI::base().'modules/'.$module->module . '/themes/' . $iflychat_theme . '/images/default_avatar.png';
+    $pos = strpos($url, ':');
+    if($pos !== false) {
+        $url = substr($url, $pos+1);
+    }
+    return $url;
 }
 
 function iflychat_get_user_profile_url() {
-  $upl = 'javascript:void()';
-  return $upl;
+    $upl = 'javascript:void()';
+    return $upl;
 }

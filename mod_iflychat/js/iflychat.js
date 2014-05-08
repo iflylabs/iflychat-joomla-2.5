@@ -29,8 +29,8 @@ function iflychat_js_init() {
               if(typeof data.is_admin != "undefined") {
   		          Drupal.settings.drupalchat.admin = ((data.is_admin)?"1":"0");
   		        }
-              if(typeof data.avatar_url != "undefined") {
-  		          Drupal.settings.drupalchat.up = data.avatar_url;
+              if(typeof data.up != "undefined") {
+  		          Drupal.settings.drupalchat.up = data.up;
   		        }
               if(typeof data.upl != "undefined") {
   		          Drupal.settings.drupalchat.upl = data.upl;
