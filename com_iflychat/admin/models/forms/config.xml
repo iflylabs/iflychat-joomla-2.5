@@ -345,29 +345,7 @@
             <option value="2">JNO</option>
         </field>
     </fieldset>
-    <fieldset name="visibility"
-              label="iFlyChat Visibility">
-        <field
-                name="iflychat_path_visibility"
-                type="list"
-                label="MOD_IFLYCHAT_PATH_VISIBILITY"
-                default="1"
-                >
-            <option value="1">MOD_IFLYCHAT_PATH_VISIBILITY_O1</option>
-            <option value="2">MOD_IFLYCHAT_PATH_VISIBILITY_O2</option>
-            <option value="2">MOD_IFLYCHAT_PATH_VISIBILITY_O3</option>
-        </field>
 
-        <field
-                name="iflychat_path_pages"
-                type="textarea"
-                label="MOD_IFLYCHAT_PATH_PAGES"
-                default=""
-                rows="6"
-                cols="60"
-
-                />
-    </fieldset>
     <fieldset name="theme"
               label="Theme Customisation">
 
