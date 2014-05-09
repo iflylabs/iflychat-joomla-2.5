@@ -50,7 +50,7 @@ class IflychatControllerIflychat extends JControllerLegacy {
 
         //post request
         $pdata = array(
-            'api_key' => 'A'.$data['iflychat_external_api_key'],
+            'api_key' => $data['iflychat_external_api_key'],
             'enable_chatroom' => $data['iflychat_enable_chatroom'],
             'theme' => ($data['iflychat_theme'] == 1)?'light':'dark',
             'notify_sound' => $data['iflychat_notification_sound'],
@@ -77,8 +77,8 @@ class IflychatControllerIflychat extends JControllerLegacy {
         jimport('joomla.http');
         $http = JHttpFactory::getHttp();
         $response = $http->post(IFLYCHAT_EXTERNAL_A_HOST . ':' . IFLYCHAT_EXTERNAL_A_PORT .  '/z/', $pdata);
-        
-        $resObj = json_decode($response->body);
+
+
 
 
         // Check if the user is authorized to do this.
