@@ -48,6 +48,13 @@ class IflychatControllerIflychat extends JControllerLegacy {
         $id		= JRequest::getInt('id');
         $option	= 'com_iflychat';
 
+        $comp = JComponentHelper::getParams('com_iflychat');
+        $var = $comp->get('iflychat_ext_d_i');
+        if(isset($var)){
+
+            $data['iflychat_ext_d_i'] = $comp->get('iflychat_ext_d_i');
+        }
+
         //post request
         $pdata = array(
             'api_key' => $data['iflychat_external_api_key'],
