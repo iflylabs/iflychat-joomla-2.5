@@ -21,10 +21,10 @@ JHtml::_('behavior.formvalidation');
     window.addEvent('domready', function() {
 
         var span = document.getElementById('config-tabs-com_iflychat_configuration');
-        if(document.id('jform_iflychat_show_admin_list').value == '1') span.getElementsByTagName('dt')[2].style.display="none";
+        if(document.id('jform_iflychat_show_admin_list').value == '2') span.getElementsByTagName('dt')[2].style.display="none";
         else span.getElementsByTagName('dt')[2].style.display="";
         document.id('jform_iflychat_show_admin_list').addEvent('change', function(){
-            if(document.id('jform_iflychat_show_admin_list').value == '1') span.getElementsByTagName('dt')[2].style.display="none";
+            if(document.id('jform_iflychat_show_admin_list').value == '2') span.getElementsByTagName('dt')[2].style.display="none";
             else span.getElementsByTagName('dt')[2].style.display="";
         });
     });
