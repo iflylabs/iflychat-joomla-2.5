@@ -7,6 +7,11 @@
  * @author iFlyChat Team
  * @link https://iflychat.com
  */
+
+// no direct access
+defined('_JEXEC') or die;
+
+
 error_reporting(2);
 jimport('joomla.application.module.helper');
 

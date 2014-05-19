@@ -8,6 +8,9 @@
  * @link https://iflychat.com
  */
 
+// no direct access
+defined('_JEXEC') or die;
+
 
 class modIflychatHelper
 {
