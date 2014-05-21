@@ -31,8 +31,6 @@ define('IFLYCHAT_EXTERNAL_A_PORT', '443');
 //Assigning values to data array
 $user = JFactory::getUser(); //getting user details
 
-
-
 $api_key = $comp->get('iflychat_external_api_key');
 
 $image_path = JURI::base().'modules/'.$module->module;
@@ -57,8 +55,6 @@ if($comp->get('iflychat_theme', 1) == 1) {
 else {
     $iflychat_theme = 'dark';
 }
-//print_r(iflychat_get_current_guest_name());
-//print_r(iflychat_get_current_guest_id());
 //data array
 $data = array(
     'uname' => ($user->id)?$user->name:iflychat_get_current_guest_name(),
@@ -72,10 +68,16 @@ $data = array(
     'validState' => array('available','offline','busy','idle')
 );
 
+if($comp->get('iflychat_user_picture', '1') == 1) {
+    $data['up'] = iflychat_get_user_pic_url();
+}
+
+$data['upl'] = iflychat_get_user_profile_url();
+
 try {
 //HTTP request
     jimport('joomla.http');
-    
+
     $http = JHttpFactory::getHttp();
     $response = $http->post(IFLYCHAT_EXTERNAL_A_HOST . ':' . IFLYCHAT_EXTERNAL_A_PORT .  '/p/', $data);
 
@@ -109,11 +111,15 @@ try {
 
     $json['name'] = ($user->id)?$user->name:iflychat_get_current_guest_name();
     $json['uid'] = ($user->id)?$user->id:'0-'.iflychat_get_current_guest_id();
-    $json['up'] = iflychat_get_user_pic_url();
+
+    if($comp->get('iflychat_user_picture', '1') == 1) {
+        $json['up'] = iflychat_get_user_pic_url();
+    }
+
     $json['upl'] = iflychat_get_user_profile_url();
 
 // Get the document object.
-    $document =& JFactory::getDocument();
+    $document =&JFactory::getDocument();
 
 // Set the MIME type for JSON output.
     $document->setMimeEncoding('application/json');

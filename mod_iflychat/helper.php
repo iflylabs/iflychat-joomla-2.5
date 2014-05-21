@@ -11,7 +11,6 @@
 // no direct access
 defined('_JEXEC') or die;
 
-
 class modIflychatHelper
 {
 
@@ -45,8 +44,8 @@ class modIflychatHelper
         }
         $my_settings = array(
 
-          //  'username' => ($user->id)?$user->name:'default', //$a_name
-           // 'uid' =>  $user->id,    //($user->id)?$user->id:'0-'._drupalchat_get_sid(),
+            //  'username' => ($user->id)?$user->name:'default', //$a_name
+            // 'uid' =>  $user->id,    //($user->id)?$user->id:'0-'._drupalchat_get_sid(),
             'current_timestamp' => time(),
             'polling_method' => '', //$polling_method
             'pollUrl' => '', //url('drupalchat/poll', array('absolute' => TRUE))
@@ -69,8 +68,15 @@ class modIflychatHelper
             'guestPrefix' => $compParams->get('iflychat_anon_prefix', 'Guest') . " ",
             'changeurl' => '',//url('drupalchat/change-guest-name'),
             'allowSmileys' => $compParams->get('iflychat_enable_smiley', 1),
+            'admin' => self::iflychat_check_chat_admin()?'1':'0'
 
         );
+        if(self::iflychat_check_chat_admin()) {
+
+            // $my_settings['arole'] = roleArray();
+
+
+        }
 
         $my_settings['iup'] = $compParams->get('iflychat_user_picture', 1);
         if($compParams->get('iflychat_user_picture', 1) == 1) {
@@ -110,6 +116,18 @@ class modIflychatHelper
         $my_settings['text_clear_room'] = JText::_('MOD_CLEAR_ALL_MESSAGES');
         $my_settings['msg_p'] = JText::_('MOD_TYPE_AND_PRESS_ENTER');
 
+        if(self::iflychat_check_chat_admin()) {
+            $iflychat_settings['text_ban'] = JText::_('MOD_BAN');//__('Ban', 'iflychat');
+            $iflychat_settings['text_ban_ip'] = JText::_('MOD_BAN_IP');//__('Ban IP', 'iflychat');
+            $iflychat_settings['text_kick'] = JText::_('MOD_KICK');//__('Kick', 'iflychat');
+            $iflychat_settings['text_ban_window_title'] = JText::_('MOD_BANNED_USERS');//__('Banned Users', 'iflychat');
+            $iflychat_settings['text_ban_window_default'] = JText::_('MOD_NO_BAN');//__('No users have been banned currently.', 'iflychat');
+            $iflychat_settings['text_ban_window_loading'] = JText::_('MOD_LOADING');//__('Loading banned user list...', 'iflychat');
+            $iflychat_settings['text_manage_rooms'] = JText::_('MOD_MANAGE_ROOMS');//__('Manage Rooms', 'iflychat');
+            $iflychat_settings['text_unban'] = JText::_('MOD_UNBAN');//__('Unban', 'iflychat');
+            $iflychat_settings['text_unban_ip'] = JText::_('MOD_UNBAN_IP');//__('Unban IP', 'iflychat');
+        }
+
         if($compParams->get('drupalchat_show_admin_list', 2) == 1) {
             $my_settings['text_support_chat_init_label'] = $compParams->get('iflychat_support_chat_init_label', 'Chat with us');
             $my_settings['text_support_chat_box_header'] = $compParams->get('iflychat_support_chat_box_header', 'Support');
@@ -142,6 +160,13 @@ class modIflychatHelper
 
         return $r;
 
+    }
+    public function iflychat_check_chat_admin(){
+
+        if(JFactory::getUser()->get('isRoot')){
+            return TRUE;
+        }else
+            return FALSE;
     }
 
 
