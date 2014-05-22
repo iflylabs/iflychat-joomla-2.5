@@ -5,6 +5,7 @@
     <creationDate>March 2014</creationDate>
     <packagename>iflychat</packagename>
     <version>1.0.0</version>
+    <license>GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html</license>
     <url>https://iflychat.com/</url>
     <packager>iFlyChat Team</packager>
     <packagerurl>https://iflychat.com/</packagerurl>
