@@ -72,10 +72,7 @@ class modIflychatHelper
 
         );
         if(self::iflychat_check_chat_admin()) {
-
-            // $my_settings['arole'] = roleArray();
-
-
+            $my_settings['arole'] = self::roleArr();
         }
 
         $my_settings['iup'] = $compParams->get('iflychat_user_picture', 1);
@@ -117,15 +114,15 @@ class modIflychatHelper
         $my_settings['msg_p'] = JText::_('MOD_TYPE_AND_PRESS_ENTER');
 
         if(self::iflychat_check_chat_admin()) {
-            $my_settings['text_ban'] = JText::_('MOD_BAN');
-            $my_settings['text_ban_ip'] = JText::_('MOD_BAN_IP');
-            $my_settings['text_kick'] = JText::_('MOD_KICK');
-            $my_settings['text_ban_window_title'] = JText::_('MOD_BANNED_USERS');
-            $my_settings['text_ban_window_default'] = JText::_('MOD_NO_BAN');
-            $my_settings['text_ban_window_loading'] = JText::_('MOD_LOADING');
-            $my_settings['text_manage_rooms'] = JText::_('MOD_MANAGE_ROOMS');
-            $my_settings['text_unban'] = JText::_('MOD_UNBAN');
-            $my_settings['text_unban_ip'] = JText::_('MOD_UNBAN_IP');
+            $my_settings['text_ban'] = JText::_('MOD_BAN');//__('Ban', 'iflychat');
+            $my_settings['text_ban_ip'] = JText::_('MOD_BAN_IP');//__('Ban IP', 'iflychat');
+            $my_settings['text_kick'] = JText::_('MOD_KICK');//__('Kick', 'iflychat');
+            $my_settings['text_ban_window_title'] = JText::_('MOD_BANNED_USERS');//__('Banned Users', 'iflychat');
+            $my_settings['text_ban_window_default'] = JText::_('MOD_NO_BAN');//__('No users have been banned currently.', 'iflychat');
+            $my_settings['text_ban_window_loading'] = JText::_('MOD_LOADING');//__('Loading banned user list...', 'iflychat');
+            $my_settings['text_manage_rooms'] = JText::_('MOD_MANAGE_ROOMS');//__('Manage Rooms', 'iflychat');
+            $my_settings['text_unban'] = JText::_('MOD_UNBAN');//__('Unban', 'iflychat');
+            $my_settings['text_unban_ip'] = JText::_('MOD_UNBAN_IP');//__('Unban IP', 'iflychat');
         }
 
         if($compParams->get('drupalchat_show_admin_list', 2) == 1) {
@@ -169,5 +166,18 @@ class modIflychatHelper
             return FALSE;
     }
 
+    public function roleArr(){
 
+        $db = JFactory::getDBO();
+        $db->setQuery($db->getQuery(true)
+                ->select(array('id','title'))
+                ->from("#__usergroups")
+        );
+        $groups=$db->loadObjectList();
+        $roleArr = array();
+        for($i=0;$i<sizeof($groups);$i++){
+            $roleArr +=  array($groups[$i]->id => $groups[$i]->title);
+        }
+        return $roleArr;
+    }
 }
