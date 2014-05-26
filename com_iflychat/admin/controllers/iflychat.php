@@ -11,7 +11,7 @@
 
 defined('_JEXEC') or die;
 $componentParams = JComponentHelper::getParams('com_iflychat');
-$variable_get= $componentParams->get('iflychat_ext_d_i', '');
+$variable_get= $componentParams->get('iflychat_ext_d_i', '3');
 define('IFLYCHAT_EXTERNAL_HOST', 'http://api'.$variable_get.'.iflychat.com');
 define('IFLYCHAT_EXTERNAL_PORT', '80');
 define('IFLYCHAT_EXTERNAL_A_HOST', 'https://api'.$variable_get.'.iflychat.com');
@@ -49,10 +49,10 @@ class IflychatControllerIflychat extends JControllerLegacy {
         $option	= 'com_iflychat';
 
         $comp = JComponentHelper::getParams('com_iflychat');
-        $var = $comp->get('iflychat_ext_d_i');
+        $var = $comp->get('iflychat_ext_d_i', '3');
         if(isset($var)){
 
-            $data['iflychat_ext_d_i'] = $comp->get('iflychat_ext_d_i');
+            $data['iflychat_ext_d_i'] = $comp->get('iflychat_ext_d_i', '3');
         }
 
         //post request

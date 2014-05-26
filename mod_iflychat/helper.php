@@ -22,7 +22,7 @@ class modIflychatHelper
         //$variable_get = '4';
         $compParams = JComponentHelper::getParams('com_iflychat');
         $module = JModuleHelper::getModule('mod_iflychat');
-        $variable_get = $compParams->get('iflychat_ext_d_i', '');
+        $variable_get = $compParams->get('iflychat_ext_d_i', '3');
 
         define('IFLYCHAT_EXTERNAL_HOST', 'http://api'.$variable_get.'.iflychat.com');
         define('IFLYCHAT_EXTERNAL_PORT', '80');
@@ -59,7 +59,7 @@ class modIflychatHelper
             'sound' => JURI::base().'modules/'.$module->module . '/swf/sound.swf',
             'soundFile' => JURI::base().'modules/'.$module->module . '/wav/notification.mp3',
             'noUsers' => '',//theme('item_list', array('items' => array(0 => array('data' => t('No users online'), 'class' => array('drupalchatnousers'),)),))
-            'smileyURL' => JURI::base().'modules/'.$module->module,
+            'smileyURL' => JURI::base().'modules/'.$module->module . '/smileys/very_emotional_emoticons-png/png-32x32/',
             'addUrl' => '',//url('drupalchat/channel/add', array('absolute' => TRUE))
             'notificationSound' => $compParams->get('iflychat_notification_sound', 1),
             'exurl' => JURI::base().'index.php?option=com_iflychat&view=auth&format=raw',// url('drupalchat/auth', array('query' => array('t' => time(),),)),
