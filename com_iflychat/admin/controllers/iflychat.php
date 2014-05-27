@@ -78,6 +78,8 @@ class IflychatControllerIflychat extends JControllerLegacy {
             'enable_guest_change_name' => $data['iflychat_anon_change_name'],
             'use_stop_word_list' => $data['iflychat_use_stop_word_list'],
             'stop_word_list' => $data['iflychat_stop_word_list'],
+            'file_attachment' => ($data['iflychat_enable_file_attachment'] == "1")?'1':'2',
+            'mobile_browser_app' => ($data['iflychat_enable_mobile_browser_app'] == "1")?'1':'2'
         );
         
         

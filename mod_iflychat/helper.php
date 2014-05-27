@@ -47,26 +47,27 @@ class modIflychatHelper
             //  'username' => ($user->id)?$user->name:'default', //$a_name
             // 'uid' =>  $user->id,    //($user->id)?$user->id:'0-'._drupalchat_get_sid(),
             'current_timestamp' => time(),
-            'polling_method' => '', //$polling_method
-            'pollUrl' => '', //url('drupalchat/poll', array('absolute' => TRUE))
-            'sendUrl' => '', //url('drupalchat/send', array('absolute' => TRUE))
-            'statusUrl' => '', //url('drupalchat/status', array('absolute' => TRUE))
-            'status' => '', //$status
+            'polling_method' => '',
+            'pollUrl' => '',
+            'sendUrl' => '',
+            'statusUrl' => '',
+            'status' => '',
             'goOnline' => JText::_('MOD_GO_ONLINE'),
             'goIdle' => JText::_('MOD_GO_IDLE'),
             'newMessage' => JText::_('MOD_NEW_CHAT_MESSAGE'),
             'images' => JURI::base().'modules/'.$module->module . '/themes/' . $iflychat_theme . '/images/',
             'sound' => JURI::base().'modules/'.$module->module . '/swf/sound.swf',
             'soundFile' => JURI::base().'modules/'.$module->module . '/wav/notification.mp3',
-            'noUsers' => '',//theme('item_list', array('items' => array(0 => array('data' => t('No users online'), 'class' => array('drupalchatnousers'),)),))
+            'noUsers' => '',
             'smileyURL' => JURI::base().'modules/'.$module->module . '/smileys/very_emotional_emoticons-png/png-32x32/',
-            'addUrl' => '',//url('drupalchat/channel/add', array('absolute' => TRUE))
+            'addUrl' => '',
             'notificationSound' => $compParams->get('iflychat_notification_sound', 1),
-            'exurl' => JURI::base().'index.php?option=com_iflychat&view=auth&format=raw',// url('drupalchat/auth', array('query' => array('t' => time(),),)),
-            'soffurl' => '',//url('drupalchat/send-offline-message'),
+            'exurl' => JURI::base().'index.php?option=com_iflychat&view=auth&format=raw',
+            'mobileWebUrl' => JURI::base().'index.php?option=com_iflychat&view=mobileauth&format=raw',
+            'soffurl' => '',
             'chat_type' => $compParams->get('iflychat_show_admin_list', 2),
             'guestPrefix' => $compParams->get('iflychat_anon_prefix', 'Guest') . " ",
-            'changeurl' => '',//url('drupalchat/change-guest-name'),
+            'changeurl' => '',
             'allowSmileys' => $compParams->get('iflychat_enable_smiley', 1),
             'admin' => self::iflychat_check_chat_admin()?'1':'0'
 
