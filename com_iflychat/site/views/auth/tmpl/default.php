@@ -67,13 +67,24 @@ $data = array(
     'enableStatus' => TRUE,
     'validState' => array('available','offline','busy','idle')
 );
-
+//Get friend's id
+if(file_exists(JPATH_ROOT .'/components/com_community/libraries/core.php')) {
+    if($comp->get('iflychat_enable_friends', 1) == 2){
+        require_once( JPATH_ROOT .'/components/com_community/libraries/core.php' );
+        $data['rel'] = '1';
+        $final_list = array();
+        $final_list['1']['name'] = 'friend';
+        $final_list['1']['plural'] = 'friends';
+        $final_list['1']['valid_uids'] = CFactory::getUser($user->id)->getFriendIds();
+        $data['valid_uids'] = $final_list;
+    }
+}
 if($comp->get('iflychat_user_picture', '1') == 1) {
     $data['up'] = iflychat_get_user_pic_url();
 }
 
 $data['upl'] = iflychat_get_user_profile_url();
-
+if(!($data['rel']==1 && $user->id==0)){
 try {
 //HTTP request
     jimport('joomla.http');
@@ -102,7 +113,6 @@ try {
 // Execute the query
         $db->setQuery($query);
         $db->query();
-
 
     }
 
@@ -147,6 +157,10 @@ function iflychat_get_random_name() {
     $f_contents = file($path);
     $line = trim($f_contents[rand(0, count($f_contents) - 1)]);
     return $line;
+}
+}
+else {
+    print_r('Access Denied');
 }
 
 function iflychat_get_current_guest_name() {

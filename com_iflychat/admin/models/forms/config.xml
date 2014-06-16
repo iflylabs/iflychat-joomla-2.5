@@ -1,466 +1,456 @@
 <?xml version="1.0" encoding="utf-8"?>
 <form>
-    <config>
+<config>
 
-        <fieldset
-                name="params"
-                label="JGLOBAL_FIELDSET_DISPLAY_OPTIONS"
+            <fieldset
+                    name="params"
+                    label="JGLOBAL_FIELDSET_DISPLAY_OPTIONS"
+                    >
+
+                <field
+                        name="iflychat_external_api_key"
+                        type="text"
+                        label="MOD_IFLYCHAT_API_KEY"
+                        description="MOD_IFLYCHAT_API_KEY_DESC"
+                        size="40"
+                        required="true"
+                        default=""
+                        filter="raw"
+                        />
+
+                <field
+                        name="iflychat_show_admin_list"
+                        type="list"
+                        label="MOD_IFLYCHAT_SHOW_ADMIN_LIST"
+                        default="2"
+                        >
+                    <option value="2">MOD_IFLYCHAT_SHOW_ADMIN_LIST_O1</option>
+                    <option value="1">MOD_IFLYCHAT_SHOW_ADMIN_LIST_O2</option>
+
+
+                </field>
+
+
+                <field
+                        name="iflychat_theme"
+                        type="radio"
+                        label="MOD_IFLYCHAT_THEME"
+                        default="1"
+                        >
+                    <option value="1">MOD_IFLYCHAT_THEME_1</option>
+                    <option value="2">MOD_IFLYCHAT_THEME_2</option>
+                </field>
+
+                <field
+                        name="iflychat_notification_sound"
+                        type="radio"
+                        label="MOD_IFLYCHAT_NOTIFICATION_SOUND"
+                        default="1"
+
+                        >
+                    <option value="1">JYES</option>
+                    <option value="2">JNO</option>
+                </field>
+                <field
+                        name="iflychat_user_picture"
+                        type="radio"
+                        label="MOD_IFLYCHAT_USER_PICTURE"
+                        default="1"
+                        >
+                    <option value="1">JYES</option>
+                    <option value="2">JNO</option>
+                </field>
+
+                <field
+                        name="iflychat_enable_smileys"
+                        type="radio"
+                        label="MOD_IFLYCHAT_ENABLE_SMILEYS"
+                        default="1"
+                        >
+                    <option value="1">JYES</option>
+                    <option value="2">JNO</option>
+                </field>
+                <field
+                        name="iflychat_log_messages"
+                        type="radio"
+                        label="MOD_IFLYCHAT_LOG_MESSAGES"
+                        default="1"
+                        >
+                    <option value="1">JYES</option>
+                    <option value="2">JNO</option>
+                </field>
+
+                <field
+                        name="iflychat_anon_prefix"
+                        type="text"
+                        label="MOD_IFLYCHAT_ANON_PREFIX"
+                        default="Guest"
+                        size="8"
+                        required="true"
+                        />
+                <field
+                        name="iflychat_anon_use_name"
+                        type="radio"
+                        label="MOD_IFLYCHAT_ANON_USE_NAME"
+                        default="1"
+                        >
+                    <option value="1">MOD_IFLYCHAT_ANON_USE_NAME_NAME</option>
+                    <option value="2">MOD_IFLYCHAT_ANON_USE_NAME_NUMBER</option>
+                </field>
+
+                <field
+                        name="iflychat_anon_change_name"
+                        type="radio"
+                        label="MOD_IFLYCHAT_ANON_CHANGE_NAME"
+                        default="1"
+                        >
+                    <option value="1">JYES</option>
+                    <option value="2">JNO</option>
+                </field>
+                <field
+                        name="iflychat_load_chat_async"
+                        type="radio"
+                        label="MOD_IFLYCHAT_LOAD_CHAT_ASYNC"
+                        default="1"
+                        >
+                    <option value="1">JYES</option>
+                    <option value="2">JNO</option>
+                </field>
+                <field
+                        name="iflychat_ext_d_i"
+                        type="hidden"
+                        label=""
+                        default=""
+
+
+                        />
+
+            </fieldset>
+
+    <fieldset name="support"
+              label="Customer Support Customization"
+              id="support"
+            >
+        <field
+                name="iflychat_support_chat_init_label"
+                type="text"
+                label="MOD_IFLYCHAT_SUPPORT_CHAT_INIT_LABEL"
+                default="Chat with us"
+                />
+        <field
+                name="iflychat_support_chat_box_header"
+                type="text"
+                label="MOD_IFLYCHAT_SUPPORT_CHAT_BOX_HEADER"
+                default="Support"
+                />
+        <field
+                name="iflychat_support_chat_box_company_name"
+                type="text"
+                label="MOD_IFLYCHAT_SUPPORT_CHAT_BOX_COMPANY_NAME"
+                default="Support Team"
+                />
+        <field
+                name="iflychat_support_chat_box_company_tagline"
+                type="text"
+                label="MOD_IFLYCHAT_SUPPORT_CHAT_BOX_COMPANY_TAGLINE"
+                default="Ask us anything..."
+                />
+        <field
+                name="iflychat_support_chat_auto_greet_enable"
+                type="radio"
+                label="MOD_IFLYCHAT_SUPPORT_CHAT_AUTO_GREET_ENABLE"
+                default="1"
                 >
-
-            <field
-                    name="iflychat_external_api_key"
-                    type="text"
-                    label="MOD_IFLYCHAT_API_KEY"
-                    description="MOD_IFLYCHAT_API_KEY_DESC"
-                    size="40"
-                    required="true"
-                    default=""
-                    filter="raw"
-                    />
-
-            <field
-                    name="iflychat_show_admin_list"
-                    type="list"
-                    label="MOD_IFLYCHAT_SHOW_ADMIN_LIST"
-                    default="2"
-                    >
-                <option value="2">MOD_IFLYCHAT_SHOW_ADMIN_LIST_O1</option>
-                <option value="1">MOD_IFLYCHAT_SHOW_ADMIN_LIST_O2</option>
-
-
-            </field>
-
-
-            <field
-                    name="iflychat_theme"
-                    type="radio"
-                    label="MOD_IFLYCHAT_THEME"
-                    default="1"
-                    >
-                <option value="1">MOD_IFLYCHAT_THEME_1</option>
-                <option value="2">MOD_IFLYCHAT_THEME_2</option>
-            </field>
-
-            <field
-                    name="iflychat_notification_sound"
-                    type="radio"
-                    label="MOD_IFLYCHAT_NOTIFICATION_SOUND"
-                    default="1"
-
-                    >
-                <option value="1">JYES</option>
-                <option value="2">JNO</option>
-            </field>
-            <field
-                    name="iflychat_user_picture"
-                    type="radio"
-                    label="MOD_IFLYCHAT_USER_PICTURE"
-                    default="1"
-                    >
-                <option value="1">JYES</option>
-                <option value="2">JNO</option>
-            </field>
-
-            <field
-                    name="iflychat_enable_smileys"
-                    type="radio"
-                    label="MOD_IFLYCHAT_ENABLE_SMILEYS"
-                    default="1"
-                    >
-                <option value="1">JYES</option>
-                <option value="2">JNO</option>
-            </field>
-            <field
-                    name="iflychat_enable_file_attachment"
-                    type="radio"
-                    label="MOD_IFLYCHAT_ENABLE_FILE_ATTACHMENT"
-                    default="1"
-                    >
-                <option value="1">JYES</option>
-                <option value="2">JNO</option>
-            </field>
-            <field
-                    name="iflychat_log_messages"
-                    type="radio"
-                    label="MOD_IFLYCHAT_LOG_MESSAGES"
-                    default="1"
-                    >
-                <option value="1">JYES</option>
-                <option value="2">JNO</option>
-            </field>
-
-            <field
-                    name="iflychat_anon_prefix"
-                    type="text"
-                    label="MOD_IFLYCHAT_ANON_PREFIX"
-                    default="Guest"
-                    size="8"
-                    required="true"
-                    />
-            <field
-                    name="iflychat_anon_use_name"
-                    type="radio"
-                    label="MOD_IFLYCHAT_ANON_USE_NAME"
-                    default="1"
-                    >
-                <option value="1">MOD_IFLYCHAT_ANON_USE_NAME_NAME</option>
-                <option value="2">MOD_IFLYCHAT_ANON_USE_NAME_NUMBER</option>
-            </field>
-
-            <field
-                    name="iflychat_anon_change_name"
-                    type="radio"
-                    label="MOD_IFLYCHAT_ANON_CHANGE_NAME"
-                    default="1"
-                    >
-                <option value="1">JYES</option>
-                <option value="2">JNO</option>
-            </field>
-            <field
-                    name="iflychat_load_chat_async"
-                    type="radio"
-                    label="MOD_IFLYCHAT_LOAD_CHAT_ASYNC"
-                    default="1"
-                    >
-                <option value="1">JYES</option>
-                <option value="2">JNO</option>
-            </field>
-            <field
-                    name="iflychat_ext_d_i"
-                    type="hidden"
-                    label=""
-                    default=""
-
-
-                    />
-
-        </fieldset>
-
-        <fieldset name="support"
-                  label="Customer Support Customization"
-                  id="support"
+            <option value="1">JYES</option>
+            <option value="2">JNO</option>
+        </field>
+        <field
+                name="iflychat_support_chat_auto_greet_message"
+                type="textarea"
+                label="MOD_IFLYCHAT_SUPPORT_CHAT_AUTO_GREET_MESSAGE"
+                default="Hi there! Welcome to our website. Let us know if you have any query!"
+                />
+        <field
+                name="iflychat_support_chat_auto_greet_time"
+                type="list"
+                label="MOD_IFLYCHAT_SUPPORT_CHAT_AUTO_GREET_TIME"
+                default="1"
                 >
-            <field
-                    name="iflychat_support_chat_init_label"
-                    type="text"
-                    label="MOD_IFLYCHAT_SUPPORT_CHAT_INIT_LABEL"
-                    default="Chat with us"
-                    />
-            <field
-                    name="iflychat_support_chat_box_header"
-                    type="text"
-                    label="MOD_IFLYCHAT_SUPPORT_CHAT_BOX_HEADER"
-                    default="Support"
-                    />
-            <field
-                    name="iflychat_support_chat_box_company_name"
-                    type="text"
-                    label="MOD_IFLYCHAT_SUPPORT_CHAT_BOX_COMPANY_NAME"
-                    default="Support Team"
-                    />
-            <field
-                    name="iflychat_support_chat_box_company_tagline"
-                    type="text"
-                    label="MOD_IFLYCHAT_SUPPORT_CHAT_BOX_COMPANY_TAGLINE"
-                    default="Ask us anything..."
-                    />
-            <field
-                    name="iflychat_support_chat_auto_greet_enable"
-                    type="radio"
-                    label="MOD_IFLYCHAT_SUPPORT_CHAT_AUTO_GREET_ENABLE"
-                    default="1"
-                    >
-                <option value="1">JYES</option>
-                <option value="2">JNO</option>
-            </field>
-            <field
-                    name="iflychat_support_chat_auto_greet_message"
-                    type="textarea"
-                    label="MOD_IFLYCHAT_SUPPORT_CHAT_AUTO_GREET_MESSAGE"
-                    default="Hi there! Welcome to our website. Let us know if you have any query!"
-                    />
-            <field
-                    name="iflychat_support_chat_auto_greet_time"
-                    type="list"
-                    label="MOD_IFLYCHAT_SUPPORT_CHAT_AUTO_GREET_TIME"
-                    default="1"
-                    >
-                <option value="1">MOD_IFLYCHAT_SUPPORT_CHAT_AUTO_GREET_TIME_1</option>
-                <option value="2">MOD_IFLYCHAT_SUPPORT_CHAT_AUTO_GREET_TIME_2</option>
-                <option value="3">MOD_IFLYCHAT_SUPPORT_CHAT_AUTO_GREET_TIME_3</option>
-                <option value="4">MOD_IFLYCHAT_SUPPORT_CHAT_AUTO_GREET_TIME_4</option>
-                <option value="5">MOD_IFLYCHAT_SUPPORT_CHAT_AUTO_GREET_TIME_5</option>
-                <option value="6">MOD_IFLYCHAT_SUPPORT_CHAT_AUTO_GREET_TIME_6</option>
-                <option value="7">MOD_IFLYCHAT_SUPPORT_CHAT_AUTO_GREET_TIME_7</option>
-                <option value="8">MOD_IFLYCHAT_SUPPORT_CHAT_AUTO_GREET_TIME_8</option>
-                <option value="9">MOD_IFLYCHAT_SUPPORT_CHAT_AUTO_GREET_TIME_9</option>
-                <option value="10">MOD_IFLYCHAT_SUPPORT_CHAT_AUTO_GREET_TIME_10</option>
-                <option value="11">MOD_IFLYCHAT_SUPPORT_CHAT_AUTO_GREET_TIME_11</option>
-                <option value="12">MOD_IFLYCHAT_SUPPORT_CHAT_AUTO_GREET_TIME_12</option>
-                <option value="13">MOD_IFLYCHAT_SUPPORT_CHAT_AUTO_GREET_TIME_13</option>
-                <option value="14">MOD_IFLYCHAT_SUPPORT_CHAT_AUTO_GREET_TIME_14</option>
-                <option value="15">MOD_IFLYCHAT_SUPPORT_CHAT_AUTO_GREET_TIME_15</option>
-                <option value="16">MOD_IFLYCHAT_SUPPORT_CHAT_AUTO_GREET_TIME_16</option>
-                <option value="17">MOD_IFLYCHAT_SUPPORT_CHAT_AUTO_GREET_TIME_17</option>
-                <option value="18">MOD_IFLYCHAT_SUPPORT_CHAT_AUTO_GREET_TIME_18</option>
-                <option value="19">MOD_IFLYCHAT_SUPPORT_CHAT_AUTO_GREET_TIME_19</option>
-                <option value="20">MOD_IFLYCHAT_SUPPORT_CHAT_AUTO_GREET_TIME_20</option>
-                <option value="30">MOD_IFLYCHAT_SUPPORT_CHAT_AUTO_GREET_TIME_30</option>
-                <option value="40">MOD_IFLYCHAT_SUPPORT_CHAT_AUTO_GREET_TIME_40</option>
-                <option value="50">MOD_IFLYCHAT_SUPPORT_CHAT_AUTO_GREET_TIME_50</option>
-                <option value="60">MOD_IFLYCHAT_SUPPORT_CHAT_AUTO_GREET_TIME_60</option>
-                <option value="70">MOD_IFLYCHAT_SUPPORT_CHAT_AUTO_GREET_TIME_70</option>
-                <option value="80">MOD_IFLYCHAT_SUPPORT_CHAT_AUTO_GREET_TIME_80</option>
-                <option value="90">MOD_IFLYCHAT_SUPPORT_CHAT_AUTO_GREET_TIME_90</option>
-                <option value="100">MOD_IFLYCHAT_SUPPORT_CHAT_AUTO_GREET_TIME_100</option>
-                <option value="110">MOD_IFLYCHAT_SUPPORT_CHAT_AUTO_GREET_TIME_110</option>
-                <option value="120">MOD_IFLYCHAT_SUPPORT_CHAT_AUTO_GREET_TIME_120</option>
-                <option value="150">MOD_IFLYCHAT_SUPPORT_CHAT_AUTO_GREET_TIME_150</option>
-                <option value="180">MOD_IFLYCHAT_SUPPORT_CHAT_AUTO_GREET_TIME_180</option>
-                <option value="240">MOD_IFLYCHAT_SUPPORT_CHAT_AUTO_GREET_TIME_240</option>
-                <option value="300">MOD_IFLYCHAT_SUPPORT_CHAT_AUTO_GREET_TIME_300</option>
+            <option value="1">MOD_IFLYCHAT_SUPPORT_CHAT_AUTO_GREET_TIME_1</option>
+            <option value="2">MOD_IFLYCHAT_SUPPORT_CHAT_AUTO_GREET_TIME_2</option>
+            <option value="3">MOD_IFLYCHAT_SUPPORT_CHAT_AUTO_GREET_TIME_3</option>
+            <option value="4">MOD_IFLYCHAT_SUPPORT_CHAT_AUTO_GREET_TIME_4</option>
+            <option value="5">MOD_IFLYCHAT_SUPPORT_CHAT_AUTO_GREET_TIME_5</option>
+            <option value="6">MOD_IFLYCHAT_SUPPORT_CHAT_AUTO_GREET_TIME_6</option>
+            <option value="7">MOD_IFLYCHAT_SUPPORT_CHAT_AUTO_GREET_TIME_7</option>
+            <option value="8">MOD_IFLYCHAT_SUPPORT_CHAT_AUTO_GREET_TIME_8</option>
+            <option value="9">MOD_IFLYCHAT_SUPPORT_CHAT_AUTO_GREET_TIME_9</option>
+            <option value="10">MOD_IFLYCHAT_SUPPORT_CHAT_AUTO_GREET_TIME_10</option>
+            <option value="11">MOD_IFLYCHAT_SUPPORT_CHAT_AUTO_GREET_TIME_11</option>
+            <option value="12">MOD_IFLYCHAT_SUPPORT_CHAT_AUTO_GREET_TIME_12</option>
+            <option value="13">MOD_IFLYCHAT_SUPPORT_CHAT_AUTO_GREET_TIME_13</option>
+            <option value="14">MOD_IFLYCHAT_SUPPORT_CHAT_AUTO_GREET_TIME_14</option>
+            <option value="15">MOD_IFLYCHAT_SUPPORT_CHAT_AUTO_GREET_TIME_15</option>
+            <option value="16">MOD_IFLYCHAT_SUPPORT_CHAT_AUTO_GREET_TIME_16</option>
+            <option value="17">MOD_IFLYCHAT_SUPPORT_CHAT_AUTO_GREET_TIME_17</option>
+            <option value="18">MOD_IFLYCHAT_SUPPORT_CHAT_AUTO_GREET_TIME_18</option>
+            <option value="19">MOD_IFLYCHAT_SUPPORT_CHAT_AUTO_GREET_TIME_19</option>
+            <option value="20">MOD_IFLYCHAT_SUPPORT_CHAT_AUTO_GREET_TIME_20</option>
+            <option value="30">MOD_IFLYCHAT_SUPPORT_CHAT_AUTO_GREET_TIME_30</option>
+            <option value="40">MOD_IFLYCHAT_SUPPORT_CHAT_AUTO_GREET_TIME_40</option>
+            <option value="50">MOD_IFLYCHAT_SUPPORT_CHAT_AUTO_GREET_TIME_50</option>
+            <option value="60">MOD_IFLYCHAT_SUPPORT_CHAT_AUTO_GREET_TIME_60</option>
+            <option value="70">MOD_IFLYCHAT_SUPPORT_CHAT_AUTO_GREET_TIME_70</option>
+            <option value="80">MOD_IFLYCHAT_SUPPORT_CHAT_AUTO_GREET_TIME_80</option>
+            <option value="90">MOD_IFLYCHAT_SUPPORT_CHAT_AUTO_GREET_TIME_90</option>
+            <option value="100">MOD_IFLYCHAT_SUPPORT_CHAT_AUTO_GREET_TIME_100</option>
+            <option value="110">MOD_IFLYCHAT_SUPPORT_CHAT_AUTO_GREET_TIME_110</option>
+            <option value="120">MOD_IFLYCHAT_SUPPORT_CHAT_AUTO_GREET_TIME_120</option>
+            <option value="150">MOD_IFLYCHAT_SUPPORT_CHAT_AUTO_GREET_TIME_150</option>
+            <option value="180">MOD_IFLYCHAT_SUPPORT_CHAT_AUTO_GREET_TIME_180</option>
+            <option value="240">MOD_IFLYCHAT_SUPPORT_CHAT_AUTO_GREET_TIME_240</option>
+            <option value="300">MOD_IFLYCHAT_SUPPORT_CHAT_AUTO_GREET_TIME_300</option>
 
 
 
-            </field>
-            <field
-                    name="iflychat_support_chat_init_label_off"
-                    type="text"
-                    label="MOD_IFLYCHAT_SUPPORT_CHAT_INIT_LABEL_OFF"
-                    default="Leave Message"
-                    />
-            <field
-                    name="iflychat_support_chat_offline_message_desc"
-                    type="textarea"
-                    label="MOD_IFLYCHAT_SUPPORT_CHAT_OFFLINE_MESSAGE_DESC"
-                    default="Hello there. We are currently offline. Please leave us a message. Thanks."
-                    />
-            <field
-                    name="iflychat_support_chat_offline_message_label"
-                    type="text"
-                    label="MOD_IFLYCHAT_SUPPORT_CHAT_OFFLINE_MESSAGE_LABEL"
-                    default="Message"
-                    />
-            <field
-                    name="iflychat_support_chat_offline_message_contact"
-                    type="text"
-                    label="MOD_IFLYCHAT_SUPPORT_CHAT_OFFLINE_MESSAGE_CONTACT"
-                    default="Contact Details"
-                    />
-            <field
-                    name="iflychat_support_chat_offline_message_send_button"
-                    type="text"
-                    label="MOD_IFLYCHAT_SUPPORT_CHAT_OFFLINE_MESSAGE_SEND_BUTTON"
-                    default="Send Message"
-                    />
-            <field
-                    name="iflychat_support_chat_offline_message_email"
-                    type="text"
-                    label="MOD_IFLYCHAT_SUPPORT_CHAT_OFFLINE_MESSAGE_EMAIL"
-                    default=""
-                    />
-        </fieldset>
-        <fieldset name="chat_moderation"
-                  label="Chat Moderation">
-            <field
-                    name="iflychat_enable_chatroom"
-                    type="radio"
-                    label="MOD_IFLYCHAT_ENABLE_CHATROOM"
-                    default="1"
-                    >
-                <option value="1">JYES</option>
-                <option value="2">JNO</option>
-            </field>
-            <field
-                    name="iflychat_stop_word_list"
-                    type="textarea"
-                    label="MOD_IFLYCHAT_STOP_WORD_LIST"
-                    default="asshole,assholes,bastard,beastial,beastiality,beastility,bestial,bestiality,bitch,bitcher,bitchers,bitches,bitchin,bitching,blowjob,blowjobs,bullshit,clit,cock,cocks,cocksuck,cocksucked,cocksucker,cocksucking,cocksucks,cum,cummer,cumming,cums,cumshot,cunillingus,cunnilingus,cunt,cuntlick,cuntlicker,cuntlicking,cunts,cyberfuc,cyberfuck,cyberfucked,cyberfucker,cyberfuckers,cyberfucking,damn,dildo,dildos,dick,dink,dinks,ejaculate,ejaculated,ejaculates,ejaculating,ejaculatings,ejaculation,fag,fagging,faggot,faggs,fagot,fagots,fags,fart,farted,farting,fartings,farts,farty,felatio,fellatio,fingerfuck,fingerfucked,fingerfucker,fingerfuckers,fingerfucking,fingerfucks,fistfuck,fistfucked,fistfucker,fistfuckers,fistfucking,fistfuckings,fistfucks,fuck,fucked,fucker,fuckers,fuckin,fucking,fuckings,fuckme,fucks,fuk,fuks,gangbang,gangbanged,gangbangs,gaysex,goddamn,hardcoresex,horniest,horny,hotsex,jism,jiz,jizm,kock,kondum,kondums,kum,kumer,kummer,kumming,kums,kunilingus,lust,lusting,mothafuck,mothafucka,mothafuckas,mothafuckaz,mothafucked,mothafucker,mothafuckers,mothafuckin,mothafucking,mothafuckings,mothafucks,motherfuck,motherfucked,motherfucker,motherfuckers,motherfuckin,motherfucking,motherfuckings,motherfucks,niger,nigger,niggers,orgasim,orgasims,orgasm,orgasms,phonesex,phuk,phuked,phuking,phukked,phukking,phuks,phuq,pis,piss,pisser,pissed,pisser,pissers,pises,pisses,pisin,pissin,pising,pissing,pisof,pissoff,porn,porno,pornography,pornos,prick,pricks,pussies,pusies,pussy,pusy,pussys,pusys,slut,sluts,smut,spunk"
-                    rows="6"
-                    cols="60"
-                    required="true"
-                    />
-            <field
-                    name="iflychat_use_stop_word_list"
-                    type="list"
-                    label="MOD_IFLYCHAT_USE_STOP_WORD_LIST"
-                    default="1"
-                    >
-                <option value="1">MOD_IFLYCHAT_USE_STOP_WORD_LIST_O1</option>
-                <option value="2">MOD_IFLYCHAT_USE_STOP_WORD_LIST_O2</option>
-                <option value="3">MOD_IFLYCHAT_USE_STOP_WORD_LIST_O3</option>
-                <option value="4">MOD_IFLYCHAT_USE_STOP_WORD_LIST_O4</option>
-            </field>
+        </field>
+        <field
+                name="iflychat_support_chat_init_label_off"
+                type="text"
+                label="MOD_IFLYCHAT_SUPPORT_CHAT_INIT_LABEL_OFF"
+                default="Leave Message"
+                />
+        <field
+                name="iflychat_support_chat_offline_message_desc"
+                type="textarea"
+                label="MOD_IFLYCHAT_SUPPORT_CHAT_OFFLINE_MESSAGE_DESC"
+                default="Hello there. We are currently offline. Please leave us a message. Thanks."
+                />
+        <field
+                name="iflychat_support_chat_offline_message_label"
+                type="text"
+                label="MOD_IFLYCHAT_SUPPORT_CHAT_OFFLINE_MESSAGE_LABEL"
+                default="Message"
+                />
+        <field
+                name="iflychat_support_chat_offline_message_contact"
+                type="text"
+                label="MOD_IFLYCHAT_SUPPORT_CHAT_OFFLINE_MESSAGE_CONTACT"
+                default="Contact Details"
+                />
+        <field
+                name="iflychat_support_chat_offline_message_send_button"
+                type="text"
+                label="MOD_IFLYCHAT_SUPPORT_CHAT_OFFLINE_MESSAGE_SEND_BUTTON"
+                default="Send Message"
+                />
+        <field
+                name="iflychat_support_chat_offline_message_email"
+                type="text"
+                label="MOD_IFLYCHAT_SUPPORT_CHAT_OFFLINE_MESSAGE_EMAIL"
+                default=""
+                />
+    </fieldset>
+    <fieldset name="chat_moderation"
+              label="Chat Moderation">
+        <field
+                name="iflychat_enable_chatroom"
+                type="radio"
+                label="MOD_IFLYCHAT_ENABLE_CHATROOM"
+                default="1"
+                >
+            <option value="1">JYES</option>
+            <option value="2">JNO</option>
+        </field>
+        <field
+                name="iflychat_stop_word_list"
+                type="textarea"
+                label="MOD_IFLYCHAT_STOP_WORD_LIST"
+                default="asshole,assholes,bastard,beastial,beastiality,beastility,bestial,bestiality,bitch,bitcher,bitchers,bitches,bitchin,bitching,blowjob,blowjobs,bullshit,clit,cock,cocks,cocksuck,cocksucked,cocksucker,cocksucking,cocksucks,cum,cummer,cumming,cums,cumshot,cunillingus,cunnilingus,cunt,cuntlick,cuntlicker,cuntlicking,cunts,cyberfuc,cyberfuck,cyberfucked,cyberfucker,cyberfuckers,cyberfucking,damn,dildo,dildos,dick,dink,dinks,ejaculate,ejaculated,ejaculates,ejaculating,ejaculatings,ejaculation,fag,fagging,faggot,faggs,fagot,fagots,fags,fart,farted,farting,fartings,farts,farty,felatio,fellatio,fingerfuck,fingerfucked,fingerfucker,fingerfuckers,fingerfucking,fingerfucks,fistfuck,fistfucked,fistfucker,fistfuckers,fistfucking,fistfuckings,fistfucks,fuck,fucked,fucker,fuckers,fuckin,fucking,fuckings,fuckme,fucks,fuk,fuks,gangbang,gangbanged,gangbangs,gaysex,goddamn,hardcoresex,horniest,horny,hotsex,jism,jiz,jizm,kock,kondum,kondums,kum,kumer,kummer,kumming,kums,kunilingus,lust,lusting,mothafuck,mothafucka,mothafuckas,mothafuckaz,mothafucked,mothafucker,mothafuckers,mothafuckin,mothafucking,mothafuckings,mothafucks,motherfuck,motherfucked,motherfucker,motherfuckers,motherfuckin,motherfucking,motherfuckings,motherfucks,niger,nigger,niggers,orgasim,orgasims,orgasm,orgasms,phonesex,phuk,phuked,phuking,phukked,phukking,phuks,phuq,pis,piss,pisser,pissed,pisser,pissers,pises,pisses,pisin,pissin,pising,pissing,pisof,pissoff,porn,porno,pornography,pornos,prick,pricks,pussies,pusies,pussy,pusy,pussys,pusys,slut,sluts,smut,spunk"
+                rows="6"
+                cols="60"
+                required="true"
+                />
+        <field
+                name="iflychat_use_stop_word_list"
+                type="list"
+                label="MOD_IFLYCHAT_USE_STOP_WORD_LIST"
+                default="1"
+                >
+            <option value="1">MOD_IFLYCHAT_USE_STOP_WORD_LIST_O1</option>
+            <option value="2">MOD_IFLYCHAT_USE_STOP_WORD_LIST_O2</option>
+            <option value="3">MOD_IFLYCHAT_USE_STOP_WORD_LIST_O3</option>
+            <option value="4">MOD_IFLYCHAT_USE_STOP_WORD_LIST_O4</option>
+        </field>
 
-            <field
-                    name="iflychat_stop_links"
-                    type="list"
-                    label="MOD_IFLYCHAT_STOP_LINKS"
-                    default="1"
-                    >
-                <option value="1">MOD_IFLYCHAT_STOP_LINKS_O1</option>
-                <option value="2">MOD_IFLYCHAT_STOP_LINKS_O2</option>
-                <option value="3">MOD_IFLYCHAT_STOP_LINKS_O3</option>
-                <option value="4">MOD_IFLYCHAT_STOP_LINKS_O4</option>
-            </field>
-            <field
-                    name="iflychat_allow_anon_links"
-                    type="radio"
-                    label="MOD_IFLYCHAT_ALLOW_ANON_LINKS"
-                    default="1"
-                    >
-                <option value="1">JYES</option>
-                <option value="2">JNO</option>
-            </field>
-            <field
-                    name="iflychat_allow_render_images"
-                    type="radio"
-                    label="MOD_IFLYCHAT_ALLOW_RENDER_IMAGES"
-                    default="1"
-                    >
-                <option value="1">JYES</option>
-                <option value="2">JNO</option>
-            </field>
-            <field
-                    name="iflychat_enable_mobile_browser_app"
-                    type="radio"
-                    label="MOD_IFLYCHAT_ENABLE_MOBILE_BROWSER_APP"
-                    default="1"
-                    >
-                <option value="1">JYES</option>
-                <option value="2">JNO</option>
-            </field>
+        <field
+                name="iflychat_stop_links"
+                type="list"
+                label="MOD_IFLYCHAT_STOP_LINKS"
+                default="1"
+                >
+            <option value="1">MOD_IFLYCHAT_STOP_LINKS_O1</option>
+            <option value="2">MOD_IFLYCHAT_STOP_LINKS_O2</option>
+            <option value="3">MOD_IFLYCHAT_STOP_LINKS_O3</option>
+            <option value="4">MOD_IFLYCHAT_STOP_LINKS_O4</option>
+        </field>
+        <field
+                name="iflychat_allow_anon_links"
+                type="radio"
+                label="MOD_IFLYCHAT_ALLOW_ANON_LINKS"
+                default="1"
+                >
+            <option value="1">JYES</option>
+            <option value="2">JNO</option>
+        </field>
+        <field
+                name="iflychat_allow_render_images"
+                type="radio"
+                label="MOD_IFLYCHAT_ALLOW_RENDER_IMAGES"
+                default="1"
+                >
+            <option value="1">JYES</option>
+            <option value="2">JNO</option>
+        </field>
 
-            <field
-                    name="iflychat_allow_single_message_delete"
-                    type="list"
-                    label="MOD_IFLYCHAT_ALLOW_SINGLE_MESSAGE_DELETE"
-                    default="1"
-                    >
-                <option value="1">MOD_IFLYCHAT_ALLOW_SINGLE_MESSAGE_DELETE_O1</option>
-                <option value="2">MOD_IFLYCHAT_ALLOW_SINGLE_MESSAGE_DELETE_O2</option>
-                <option value="3">MOD_IFLYCHAT_ALLOW_SINGLE_MESSAGE_DELETE_O3</option>
+        <field
+                name="iflychat_allow_single_message_delete"
+                type="list"
+                label="MOD_IFLYCHAT_ALLOW_SINGLE_MESSAGE_DELETE"
+                default="1"
+                >
+            <option value="1">MOD_IFLYCHAT_ALLOW_SINGLE_MESSAGE_DELETE_O1</option>
+            <option value="2">MOD_IFLYCHAT_ALLOW_SINGLE_MESSAGE_DELETE_O2</option>
+            <option value="3">MOD_IFLYCHAT_ALLOW_SINGLE_MESSAGE_DELETE_O3</option>
 
-            </field>
-            <field
-                    name="iflychat_allow_clear_room_history"
-                    type="list"
-                    label="MOD_IFLYCHAT_ALLOW_CLEAR_ROOM_HISTORY"
-                    default="1"
-                    >
-                <option value="1">MOD_IFLYCHAT_ALLOW_CLEAR_ROOM_HISTORY_O1</option>
-                <option value="2">MOD_IFLYCHAT_ALLOW_CLEAR_ROOM_HISTORY_O2</option>
-                <option value="3">MOD_IFLYCHAT_ALLOW_CLEAR_ROOM_HISTORY_O3</option>
+        </field>
+        <field
+                name="iflychat_allow_clear_room_history"
+                type="list"
+                label="MOD_IFLYCHAT_ALLOW_CLEAR_ROOM_HISTORY"
+                default="1"
+                >
+            <option value="1">MOD_IFLYCHAT_ALLOW_CLEAR_ROOM_HISTORY_O1</option>
+            <option value="2">MOD_IFLYCHAT_ALLOW_CLEAR_ROOM_HISTORY_O2</option>
+            <option value="3">MOD_IFLYCHAT_ALLOW_CLEAR_ROOM_HISTORY_O3</option>
 
-            </field>
-            <field
-                    name="iflychat_allow_user_font_color"
-                    type="radio"
-                    label="MOD_IFLYCHAT_ALLOW_USER_FONT_COLOR"
-                    default="1"
-                    >
-                <option value="1">JYES</option>
-                <option value="2">JNO</option>
-            </field>
-        </fieldset>
+        </field>
+        <field
+                name="iflychat_allow_user_font_color"
+                type="radio"
+                label="MOD_IFLYCHAT_ALLOW_USER_FONT_COLOR"
+                default="1"
+                >
+            <option value="1">JYES</option>
+            <option value="2">JNO</option>
+        </field>
+    </fieldset>
 
-        <fieldset name="theme"
-                  label="Theme Customisation">
+    <fieldset name="theme"
+              label="Theme Customisation">
 
-            <field
-                    name="iflychat_chat_topbar_color"
-                    type="text"
-                    label="MOD_IFLYCHAT_CHAT_TOPBAR_COLOR"
-                    default="#222222"
-                    size="7"
-                    required="true"
-                    />
+        <field
+                name="iflychat_chat_topbar_color"
+                type="text"
+                label="MOD_IFLYCHAT_CHAT_TOPBAR_COLOR"
+                default="#222222"
+                size="7"
+                required="true"
+                />
 
-            <field
-                    name="iflychat_chat_topbar_text_color"
-                    type="text"
-                    label="MOD_IFLYCHAT_CHAT_TOPBAR_TEXT_COLOR"
-                    default="#FFFFFF"
-                    size="7"
-                    required="true"
-                    />
+        <field
+                name="iflychat_chat_topbar_text_color"
+                type="text"
+                label="MOD_IFLYCHAT_CHAT_TOPBAR_TEXT_COLOR"
+                default="#FFFFFF"
+                size="7"
+                required="true"
+                />
 
-            <field
-                    name="iflychat_font_color"
-                    type="text"
-                    label="MOD_IFLYCHAT_FONT_COLOR"
-                    default="#222222"
-                    size="7"
-                    required="true"
-                    />
+        <field
+                name="iflychat_font_color"
+                type="text"
+                label="MOD_IFLYCHAT_FONT_COLOR"
+                default="#222222"
+                size="7"
+                required="true"
+                />
 
-            <field
-                    name="iflychat_public_chatroom_header"
-                    type="text"
-                    label="MOD_IFLYCHAT_PUBLIC_CHATROOM_HEADER"
-                    default="Public Chatroom"
-                    size="40"
-                    required="true"
-                    />
+        <field
+                name="iflychat_public_chatroom_header"
+                type="text"
+                label="MOD_IFLYCHAT_PUBLIC_CHATROOM_HEADER"
+                default="Public Chatroom"
+                size="40"
+                required="true"
+                />
 
-            <field
-                    name="iflychat_chat_list_header"
-                    type="text"
-                    label="MOD_IFLYCHAT_CHAT_LIST_CHATROOM_HEADER"
-                    default="Chat"
-                    size="40"
-                    required="true"
-                    />
-        </fieldset>
-        <fieldset name="list_control"
-                  label="iFlyChat Online User List Control">
-            <field
-                    name="iflychat_minimize_chat_user_list"
-                    type="radio"
-                    label="MOD_IFLYCHAT_MINIMIZE_CHAT_USER_LIST"
-                    default="2"
-                    >
-                <option value="1">JYES</option>
-                <option value="2">JNO</option>
-            </field>
-            <field
-                    name="iflychat_enable_search_bar"
-                    type="radio"
-                    label="MOD_IFLYCHAT_ENABLE_SEARCH_BAR"
-                    default="1"
-                    >
-                <option value="1">JYES</option>
-                <option value="2">JNO</option>
-            </field>
-            <field
-                    name="iflychat_rel"
-                    type="radio"
-                    label="MOD_IFLYCHAT_REL"
-                    default="0"
-                    >
-                <option value="0">All users</option>
+        <field
+                name="iflychat_chat_list_header"
+                type="text"
+                label="MOD_IFLYCHAT_CHAT_LIST_CHATROOM_HEADER"
+                default="Chat"
+                size="40"
+                required="true"
+                />
+    </fieldset>
+    <fieldset name="list_control"
+              label="iFlyChat Online User List Control"
+              addfieldpath="/administrator/components/com_iflychat/models/fields">
+        <field
+                name="iflychat_minimize_chat_user_list"
+                type="radio"
+                label="MOD_IFLYCHAT_MINIMIZE_CHAT_USER_LIST"
+                default="2"
+                >
+            <option value="1">JYES</option>
+            <option value="2">JNO</option>
+        </field>
+        <field
+                name="iflychat_enable_search_bar"
+                type="radio"
+                label="MOD_IFLYCHAT_ENABLE_SEARCH_BAR"
+                default="1"
+                >
+            <option value="1">JYES</option>
+            <option value="2">JNO</option>
+        </field>
+        <field
+                name="iflychat_rel"
+                type="custom2"
+                label2="MOD_IFLYCHAT_REL"
+                default="0"
+                >
+            <option value="0">All users</option>
 
-            </field>
+        </field>
 
-            <field
-                    name="iflychat_ur_name"
-                    type="text"
-                    label="MOD_IFLYCHAT_UR_NAME"
-                    default=""
-                    size="40"
-                    />
-            <field
-                    name="iflychat_only_loggedin"
-                    type="radio"
-                    label="MOD_IFLYCHAT_ONLY_LOGGEDIN"
-                    default="1"
-                    >
-                <option value="1">JYES</option>
-                <option value="2">JNO</option>
-            </field>
-        </fieldset>
+        <field
+                name="iflychat_ur_name"
+                type="custom3"
+                label3="MOD_IFLYCHAT_UR_NAME"
+                default=""
 
-
-    </config>
+                />
+        <field
+                name="iflychat_only_loggedin"
+                type="custom4"
+                label4="MOD_IFLYCHAT_ONLY_LOGGEDIN"
+                default="1"
+                >
+            <option value="1">JYES</option>
+            <option value="2">JNO</option>
+        </field>
+        <field
+               name="iflychat_enable_friends"
+               type="custom"
+               label1="MOD_IFLYCHAT_ENABLE_FRIENDS"
+               default="1"
+                >
+        <option value="2">JYES</option>
+        <option value="1">JNO</option>
+        </field>
+    </fieldset>
+</config>
 </form>
 
