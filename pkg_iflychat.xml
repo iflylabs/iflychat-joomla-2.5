@@ -7,8 +7,8 @@
     <version>1.0.0</version>
     <license>GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html</license>
     <url>https://iflychat.com/</url>
-    <packager>iFlyChat Team</packager>
-    <packagerurl>https://iflychat.com/</packagerurl>
+    <package>iFlyChat Team</package>
+    <packageurl>https://iflychat.com/</packageurl>
     <description>Thank you for choosing iFlyChat.</description>
     <files folder="packages">
         <file type="component" id="iflychat" >com_iflychat.zip</file>
