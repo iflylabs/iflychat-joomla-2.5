@@ -150,6 +150,11 @@ catch(Exception $e)
     print_r(json_encode($var));
 }
 
+
+}
+else {
+    print_r('Access Denied');
+}
 function iflychat_get_random_name() {
     $module = JModuleHelper::getModule('mod_iflychat');
     $path = JURI::base().'modules/'.$module->module . "/guest_names/iflychat_guest_random_names.txt";
@@ -157,11 +162,6 @@ function iflychat_get_random_name() {
     $line = trim($f_contents[rand(0, count($f_contents) - 1)]);
     return $line;
 }
-}
-else {
-    print_r('Access Denied');
-}
-
 function iflychat_get_current_guest_name() {
 
     $comp = JComponentHelper::getParams('com_iflychat');
