@@ -15,6 +15,6 @@
         <file type="module" id="iflychat" client="site">mod_iflychat.zip</file>
     </files>
     <updateservers>
-        <server type="collection" priority="1" name="iFlyChat 2.5.0 Update Site">http://localhost/update/iflychat_2.5_update.xml</server>
+        <server type="collection" priority="1" name="iFlyChat 2.5.0 Update Site">https://iflychat.com/downloads/joomla-2-5/iflychat_2_5_update.xml</server>
     </updateservers>
 </extension>
