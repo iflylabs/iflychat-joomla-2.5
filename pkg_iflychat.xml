@@ -4,7 +4,7 @@
     <author>iFlyChat Team</author>
     <creationDate>March 2014</creationDate>
     <packagename>iflychat</packagename>
-    <version>1.0.2</version>
+    <version>1.0.3</version>
     <license>GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html</license>
     <url>https://iflychat.com/</url>
     <package>iFlyChat Team</package>
@@ -15,6 +15,6 @@
         <file type="module" id="iflychat" client="site">mod_iflychat.zip</file>
     </files>
     <updateservers>
-        <server type="collection" priority="1" name="iFlyChat 2.5.0 Update Site">https://iflychat.com/downloads/joomla-2-5/iflychat_2_5_update.xml</server>
+        <server type="collection" priority="1" name="iFlyChat 2.5.0 Update Site">https://iflychat.com/downloads/joomla-3/iflychat_update.xml</server>
     </updateservers>
 </extension>
