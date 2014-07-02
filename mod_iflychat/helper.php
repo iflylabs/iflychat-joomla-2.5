@@ -16,7 +16,7 @@ class modIflychatHelper
 
 
     //my setting array function
-    public static function iflychat_initial_go() {
+    public function iflychat_initial_go() {
 
         //$variable_get = '4';
         $compParams = JComponentHelper::getParams('com_iflychat');
@@ -68,11 +68,11 @@ class modIflychatHelper
             'guestPrefix' => $compParams->get('iflychat_anon_prefix', 'Guest') . " ",
             'changeurl' => '',
             'allowSmileys' => $compParams->get('iflychat_enable_smiley', 1),
-            'admin' => self::iflychat_check_chat_admin()?'1':'0'
+            'admin' => $this->iflychat_check_chat_admin()?'1':'0'
 
         );
-        if(self::iflychat_check_chat_admin()) {
-            $my_settings['arole'] = self::roleArr();
+        if($this->iflychat_check_chat_admin()) {
+            $my_settings['arole'] = $this->roleArr();
         }
 
         $my_settings['iup'] = $compParams->get('iflychat_user_picture', 1);
@@ -153,7 +153,7 @@ class modIflychatHelper
     // Run script in body
     public function get_html_code(){
 
-        $r = 'Drupal={};Drupal.settings={};Drupal.settings.drupalchat=' . json_encode(self::iflychat_initial_go())  . ';</script>';
+        $r = 'Drupal={};Drupal.settings={};Drupal.settings.drupalchat=' . json_encode($this->iflychat_initial_go())  . ';</script>';
 
         return $r;
 
