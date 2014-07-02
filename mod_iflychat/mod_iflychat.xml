@@ -11,7 +11,7 @@
     <license>GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html</license>
     <authorEmail>joomla@iflylabs.com</authorEmail>
     <authorUrl>https://iflychat.com</authorUrl>
-    <version>1.0.3</version>
+    <version>1.0.4</version>
     <description>iFlyChat allows visitors of your Joomla site to chat with each other privately (one-to-one chat) or together in chat rooms.</description>
     <files>
         <filename module="mod_iflychat">mod_iflychat.php</filename>
