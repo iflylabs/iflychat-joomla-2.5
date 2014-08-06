@@ -82,7 +82,7 @@ class modIflychatHelper
             $my_settings['default_cr'] = JURI::base().'modules/'.$module->module . '/themes/' . $iflychat_theme . '/images/default_room.png';
             $my_settings['default_team'] = JURI::base().'modules/'.$module->module . '/themes/' . $iflychat_theme . '/images/default_team.png';
         }
-        $u =& JFactory::getURI();
+        $u = JFactory::getURI();
         if($u->isSSL()) {
             $my_settings['external_host'] = IFLYCHAT_EXTERNAL_A_HOST;
             $my_settings['external_port'] = IFLYCHAT_EXTERNAL_A_PORT;
