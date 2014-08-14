@@ -71,6 +71,16 @@
                     <option value="2">JNO</option>
                 </field>
                 <field
+                        name="iflychat_enable_file_attachment"
+                        type="radio"
+
+                        label="MOD_IFLYCHAT_ENABLE_FILE_ATTACHMENT"
+                        default="1"
+                        >
+                    <option value="1">JYES</option>
+                    <option value="2">JNO</option>
+                </field>
+                <field
                         name="iflychat_log_messages"
                         type="radio"
                         label="MOD_IFLYCHAT_LOG_MESSAGES"
@@ -312,7 +322,16 @@
             <option value="1">JYES</option>
             <option value="2">JNO</option>
         </field>
-
+        <field
+                name="iflychat_enable_mobile_browser_app"
+                type="radio"
+                class="btn-group btn-group-yesno"
+                label="MOD_IFLYCHAT_ENABLE_MOBILE_BROWSER_APP"
+                default="1"
+                >
+            <option value="1">JYES</option>
+            <option value="2">JNO</option>
+        </field>
         <field
                 name="iflychat_allow_single_message_delete"
                 type="list"

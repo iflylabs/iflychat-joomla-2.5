@@ -88,8 +88,15 @@ try {
 //HTTP request
     jimport('joomla.http');
 
-    $http = JHttpFactory::getHttp();
-    $response = $http->post(IFLYCHAT_EXTERNAL_A_HOST . ':' . IFLYCHAT_EXTERNAL_A_PORT .  '/p/', $data);
+    if(file_exists(JPATH_ROOT .'/libraries/joomla/http/factory.php')) {
+        $http = JHttpFactory::getHttp();
+
+        $response = $http->post(IFLYCHAT_EXTERNAL_A_HOST . ':' . IFLYCHAT_EXTERNAL_A_PORT .  '/p/', $data);
+
+    } else{
+        $http = new JHttp();
+        $response = $http->post(IFLYCHAT_EXTERNAL_A_HOST . ':' . IFLYCHAT_EXTERNAL_A_PORT .  '/p/', $data);
+    }
 
     $resObj = json_decode($response->body);
 

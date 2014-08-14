@@ -80,11 +80,19 @@ class IflychatControllerIflychat extends JControllerLegacy {
             'file_attachment' => ($data['iflychat_enable_file_attachment'] == "1")?'1':'2',
             'mobile_browser_app' => ($data['iflychat_enable_mobile_browser_app'] == "1")?'1':'2'
         );
-        
-        
+
+
         jimport('joomla.http');
-        $http = JHttpFactory::getHttp();
-        $response = $http->post(IFLYCHAT_EXTERNAL_A_HOST . ':' . IFLYCHAT_EXTERNAL_A_PORT .  '/z/', $pdata);
+
+        if(file_exists(JPATH_ROOT .'/libraries/joomla/http/factory.php')) {
+            $http = JHttpFactory::getHttp();
+
+            $response = $http->post(IFLYCHAT_EXTERNAL_A_HOST . ':' . IFLYCHAT_EXTERNAL_A_PORT .  '/z/', $pdata);
+
+        } else{
+            $http = new JHttp();
+            $response = $http->post(IFLYCHAT_EXTERNAL_A_HOST . ':' . IFLYCHAT_EXTERNAL_A_PORT .  '/z/', $pdata);
+        }
 
 
 

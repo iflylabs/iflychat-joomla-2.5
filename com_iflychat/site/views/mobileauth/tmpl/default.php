@@ -26,10 +26,19 @@ $data['settings']['port'] = (($u->isSSL())?(IFLYCHAT_EXTERNAL_A_PORT):(IFLYCHAT_
 
 
 //HTTP request
-    jimport('joomla.http');
+jimport('joomla.http');
 
+if(file_exists(JPATH_ROOT .'/libraries/joomla/http/factory.php')) {
     $http = JHttpFactory::getHttp();
+
     $response = $http->post(IFLYCHAT_EXTERNAL_A_HOST . ':' . IFLYCHAT_EXTERNAL_A_PORT .  '/m/v1/app/', $data);
+
+} else{
+    $http = new JHttp();
+    $response = $http->post(IFLYCHAT_EXTERNAL_A_HOST . ':' . IFLYCHAT_EXTERNAL_A_PORT .  '/m/v1/app/', $data);
+}
+
+
 if(($response->code == 200)) {
     $o = $response->body;
 }

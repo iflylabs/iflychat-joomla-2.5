@@ -114,6 +114,7 @@ class modIflychatHelper
         $my_settings['msg_p'] = JText::_('MOD_TYPE_AND_PRESS_ENTER');
 
         if(self::iflychat_check_chat_admin()) {
+
             $my_settings['text_ban'] = JText::_('MOD_BAN');
             $my_settings['text_ban_ip'] = JText::_('MOD_BAN_IP');
             $my_settings['text_kick'] = JText::_('MOD_KICK');
