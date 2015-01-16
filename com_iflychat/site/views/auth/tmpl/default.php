@@ -13,25 +13,19 @@ defined('_JEXEC') or die;
 
 error_reporting(2);
 jimport('joomla.application.module.helper');
-
+require(JPATH_ROOT .'/modules/mod_iflychat/helper.php');
+$helpObj = new modIflychatHelper();
 $comp = JComponentHelper::getParams('com_iflychat'); //getting component details
 $module = JModuleHelper::getModule('mod_iflychat');
-//$variable_get = $moduleParams->get('iflychat_ext_d_i');
-
-//$variable_get = '4';
 $variable_get = $comp->get('iflychat_ext_d_i', '');
-
 define('IFLYCHAT_EXTERNAL_HOST', 'http://api'.$variable_get.'.iflychat.com');
 define('IFLYCHAT_EXTERNAL_PORT', '80');
 define('IFLYCHAT_EXTERNAL_A_HOST', 'https://api'.$variable_get.'.iflychat.com');
 define('IFLYCHAT_EXTERNAL_A_PORT', '443');
 
-
 //Assigning values to data array
 $user = JFactory::getUser(); //getting user details
-
 $api_key = $comp->get('iflychat_external_api_key');
-
 $image_path = JURI::base().'modules/'.$module->module;
 
 if($user->get('isRoot')) {
@@ -45,8 +39,6 @@ else {
         $role = "normal";
     }
 }
-
-
 
 if($comp->get('iflychat_theme', 1) == 1) {
     $iflychat_theme = 'light';
@@ -66,6 +58,10 @@ $data = array(
     'enableStatus' => TRUE,
     'validState' => array('available','offline','busy','idle')
 );
+//Send roles in data array if role is admin
+if($role == 'admin'){
+    $data['aRole'] = $helpObj->roleArr();
+}
 //Get friend's id
 if(file_exists(JPATH_ROOT .'/components/com_community/libraries/core.php')) {
     if($comp->get('iflychat_enable_friends', 1) == 2){
@@ -81,73 +77,50 @@ if(file_exists(JPATH_ROOT .'/components/com_community/libraries/core.php')) {
 if($comp->get('iflychat_user_picture', '1') == 1) {
     $data['up'] = iflychat_get_user_pic_url();
 }
-
 $data['upl'] = iflychat_get_user_profile_url();
 if(!($data['rel']==1 && $user->id==0)){
 try {
 //HTTP request
     jimport('joomla.http');
-
     if(file_exists(JPATH_ROOT .'/libraries/joomla/http/factory.php')) {
         $http = JHttpFactory::getHttp();
-
         $response = $http->post(IFLYCHAT_EXTERNAL_A_HOST . ':' . IFLYCHAT_EXTERNAL_A_PORT .  '/p/', $data);
-
     } else{
         $http = new JHttp();
         $response = $http->post(IFLYCHAT_EXTERNAL_A_HOST . ':' . IFLYCHAT_EXTERNAL_A_PORT .  '/p/', $data);
     }
-
     $resObj = json_decode($response->body);
-
-
 
     if(isset($resObj->_i) && ($resObj->_i!=$variable_get)) {
 
-
         $comp->set('iflychat_ext_d_i', $resObj->_i);
-
         // Get a new database query instance
         $db = JFactory::getDBO();
         $query = $db->getQuery(true);
-
         // Build the query
         $query->update('#__extensions AS a');
         $query->set('a.params = ' . $db->quote((string)$comp));
         $query->where('a.element = "com_iflychat"');
-
 // Execute the query
         $db->setQuery($query);
         $db->query();
-
     }
-
     $json = json_decode($response->body, TRUE);
-
-
     $json['name'] = ($user->id)?$user->name:iflychat_get_current_guest_name();
     $json['uid'] = ($user->id)?$user->id:'0-'.iflychat_get_current_guest_id();
-
     if($comp->get('iflychat_user_picture', '1') == 1) {
         $json['up'] = iflychat_get_user_pic_url();
     }
-
     $json['upl'] = iflychat_get_user_profile_url();
-
 // Get the document object.
     $document =&JFactory::getDocument();
-
 // Set the MIME type for JSON output.
     $document->setMimeEncoding('application/json');
     print json_encode($json);
 }
 
-
-
 catch(Exception $e)
 {
-
-
     $var = array (
         'uname' => ($user->id)?$user->name:iflychat_get_current_guest_name(),
         'uid' =>($user->id)?$user->id:'0-'.iflychat_get_current_guest_id()
@@ -156,8 +129,6 @@ catch(Exception $e)
     $document->setMimeEncoding('application/json');
     print_r(json_encode($var));
 }
-
-
 }
 else {
     print_r('Access Denied');
@@ -173,9 +144,7 @@ function iflychat_get_current_guest_name() {
 
     $comp = JComponentHelper::getParams('com_iflychat');
     if(isset($_SESSION) && isset($_SESSION['iflychat_guest_name'])) {
-        //if(!isset($_COOKIE) || !isset($_COOKIE['drupalchat_guest_name'])) {
         setrawcookie('iflychat_guest_name', rawurlencode($_SESSION['iflychat_guest_name']), time()+60*60*24*365);
-        //}
     }
     else if(isset($_COOKIE) && isset($_COOKIE['iflychat_guest_name']) && isset($_COOKIE['iflychat_guest_session'])&& ($_COOKIE['iflychat_guest_session']==iflychat_compute_guest_session(iflychat_get_current_guest_id()))) {
         $_SESSION['iflychat_guest_name'] = check_plain($_COOKIE['iflychat_guest_name']);
@@ -194,10 +163,8 @@ function iflychat_get_current_guest_name() {
 
 function iflychat_get_current_guest_id() {
     if(isset($_SESSION) && isset($_SESSION['iflychat_guest_id'])) {
-        //if(!isset($_COOKIE) || !isset($_COOKIE['drupalchat_guest_id'])) {
         setrawcookie('iflychat_guest_id', rawurlencode($_SESSION['iflychat_guest_id']), time()+60*60*24*365);
         setrawcookie('iflychat_guest_session', rawurlencode($_SESSION['iflychat_guest_session']), time()+60*60*24*365);
-        //}
     }
     else if(isset($_COOKIE) && isset($_COOKIE['iflychat_guest_id']) && isset($_COOKIE['iflychat_guest_session']) && ($_COOKIE['iflychat_guest_session']==iflychat_compute_guest_session($_COOKIE['iflychat_guest_id']))) {
         $_SESSION['iflychat_guest_id'] = check_plain($_COOKIE['iflychat_guest_id']);
