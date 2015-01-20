@@ -60,7 +60,7 @@ $data = array(
 );
 //Send roles in data array if role is admin
 if($role == 'admin'){
-    $data['aRole'] = $helpObj->roleArr();
+    $data['allRoles'] = $helpObj->roleArr();
 }
 //Get friend's id
 if(file_exists(JPATH_ROOT .'/components/com_community/libraries/core.php')) {
