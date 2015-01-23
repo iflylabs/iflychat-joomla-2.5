@@ -68,7 +68,8 @@ class modIflychatHelper
             'guestPrefix' => $compParams->get('iflychat_anon_prefix', 'Guest') . " ",
             'changeurl' => '',
             'allowSmileys' => $compParams->get('iflychat_enable_smiley', 1),
-            'admin' => $this->iflychat_check_chat_admin()?'1':'0'
+            'admin' => $this->iflychat_check_chat_admin()?'1':'0',
+            'theme' => $iflychat_theme
 
         );
         if($this->iflychat_check_chat_admin()) {
