@@ -198,9 +198,28 @@ function iflychat_get_user_pic_url() {
     if(file_exists(JPATH_ROOT .'/components/com_community/libraries/core.php')) {
         require_once( JPATH_ROOT .'/components/com_community/libraries/core.php' );
         $user = JFactory::getUser()->id;
-        $url = CFactory::getUser($user)->getAvatar();
-        return $url;
-    }
+        $xml = simplexml_load_file(JPATH_SITE .'/administrator/components/com_community/community.xml');
+        $version = (string)$xml->version;
+		
+         if ($version[0] == '3'){
+	     $url =CFactory::getUser($user)->getAvatar();
+	 return $url;
+   }
+         elseif($version[0] == '4'){
+	      $url =JURI::base().CFactory::getUser($user)->getAvatar();
+	  
+          $var = explode("/", $url);
+	      $result = sizeof($var)-2;
+	      if($var[$result]== 'assets'){
+	      $host = JURI::getInstance()->getHost();
+	      $url = $var[0].'//'.$host.CFactory::getUser($user)->getAvatar();
+	  return $url;
+	} 
+	      else {
+	  return $url;		
+   }
+   }
+   }
     else {
         $module = JModuleHelper::getModule('mod_iflychat');
         $comp = JComponentHelper::getParams('com_iflychat');
