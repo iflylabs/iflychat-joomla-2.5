@@ -220,8 +220,36 @@ function iflychat_get_user_pic_url() {
    }
    }
    }
-    else {
-        $module = JModuleHelper::getModule('mod_iflychat');
+    else{
+		  if( ( file_exists( JPATH_SITE . '/libraries/CBLib/CBLib/Core/CBLib.php' ))||(file_exists(JPATH_ADMINISTRATOR . '/components/com_comprofiler/plugin.foundation.php'))){
+	       require_once( JPATH_ADMINISTRATOR . '/components/com_comprofiler/plugin.foundation.php');
+		   $user = JFactory::getUser();
+	       if(!$user->id == '0'){
+	       $cbUser = & CBuser::getInstance( $user->id);
+	       $cbUser->_getCbTabs(false);
+		  // print_r($cbUser->getField( 'avatar', null, 'csv', 'none', 'list'));
+		   return $cbUser->getField( 'avatar', null, 'csv', 'none', 'list');
+		   
+		 }
+		 else {
+		      $module = JModuleHelper::getModule('mod_iflychat');
+              $comp = JComponentHelper::getParams('com_iflychat');
+              if($comp->get('iflychat_theme', 1) == 1){
+                 $iflychat_theme = 'light';
+        }
+              else {
+                 $iflychat_theme = 'dark';
+        }
+		$url = JURI::base().'modules/'.$module->module . '/themes/' . $iflychat_theme . '/images/default_avatar.png';
+        $pos = strpos($url, ':');
+        if($pos !== false) {
+           $url = substr($url, $pos+1);
+        }
+		return $url;
+ }  		  
+}  
+       else{
+		$module = JModuleHelper::getModule('mod_iflychat');
         $comp = JComponentHelper::getParams('com_iflychat');
         if($comp->get('iflychat_theme', 1) == 1) {
             $iflychat_theme = 'light';
@@ -229,15 +257,17 @@ function iflychat_get_user_pic_url() {
         else {
             $iflychat_theme = 'dark';
         }
-        $url = JURI::base().'modules/'.$module->module . '/themes/' . $iflychat_theme . '/images/default_avatar.png';
+		$url = JURI::base().'modules/'.$module->module . '/themes/' . $iflychat_theme . '/images/default_avatar.png';
         $pos = strpos($url, ':');
         if($pos !== false) {
             $url = substr($url, $pos+1);
         }
-        return $url;
-    }
+		//print_r($url);
+	   return $url;
+		
 }
-
+}  
+}
 function iflychat_get_user_profile_url() {
     if(file_exists(JPATH_ROOT .'/components/com_community/libraries/core.php')) {
 
@@ -250,10 +280,26 @@ function iflychat_get_user_profile_url() {
         $upl = $var[0].'://'.$host.$profileLink;
         return $upl;
 
-    }else {
-
-
-        $upl = 'javascript:void()';
-        return $upl;
     }
+	
+	
+	else {
+        require_once( JPATH_ADMINISTRATOR . '/components/com_comprofiler/plugin.foundation.php');
+		 global $_CB_framework;
+		 $user = JFactory::getUser()->id;
+		 if($user !== '0'){
+		 $id = $_CB_framework->displayedUser($user);
+		 
+		 $cbUser =& CBuser::getInstance( $user ); 
+		 $profilLink = cbSef('index.php?option=com_comprofiler&amp;task=userProfile&amp;user='.$id . getCBprofileItemid(), true);
+		 //print_r($profilLink);
+		 return $profilLink;
+		 }
+	 else{
+         $upl = 'javascript:void()';
+         return $upl;
 }
+}
+}
+
+
