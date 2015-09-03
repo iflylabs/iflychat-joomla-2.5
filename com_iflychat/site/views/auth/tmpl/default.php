@@ -284,6 +284,7 @@ function iflychat_get_user_profile_url() {
     }
 	
 	else {
+        if( ( file_exists( JPATH_SITE . '/libraries/CBLib/CBLib/Core/CBLib.php' ))||(file_exists(JPATH_ADMINISTRATOR . '/components/com_comprofiler/plugin.foundation.php'))){		
         require_once( JPATH_ADMINISTRATOR . '/components/com_comprofiler/plugin.foundation.php');
 		 global $_CB_framework;
 		 $user = JFactory::getUser()->id;
@@ -295,6 +296,7 @@ function iflychat_get_user_profile_url() {
 		 //print_r($profilLink);
 		 return $profilLink;
 		 }
+        }
 		 else{
          $upl = 'javascript:void()';
          return $upl;
